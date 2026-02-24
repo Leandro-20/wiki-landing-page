@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Menu, X, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -13,11 +13,29 @@ const navLinks = [
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50)
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-background/90 backdrop-blur-md border-b border-border shadow-sm"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a href="#inicio" className="font-serif text-3xl tracking-tight text-foreground">
+        <a
+          href="#inicio"
+          className={`font-serif text-3xl tracking-tight transition-colors duration-500 ${
+            scrolled ? "text-foreground" : "text-background"
+          }`}
+        >
           Wiki
         </a>
 
@@ -26,7 +44,9 @@ export function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm font-medium tracking-wide text-muted-foreground transition-colors hover:text-foreground uppercase"
+                className={`text-sm font-medium tracking-wide uppercase transition-colors duration-300 hover:text-accent ${
+                  scrolled ? "text-muted-foreground" : "text-background/80 hover:text-background"
+                }`}
               >
                 {link.label}
               </a>
@@ -40,7 +60,7 @@ export function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button className="bg-accent text-accent-foreground hover:bg-accent/90 gap-2 cursor-pointer">
+            <Button className="bg-accent text-accent-foreground hover:bg-accent/90 gap-2 cursor-pointer transition-transform duration-200 hover:scale-105 active:scale-95">
               <Phone className="h-4 w-4" />
               Consultar
             </Button>
@@ -48,7 +68,7 @@ export function Navbar() {
         </div>
 
         <button
-          className="md:hidden text-foreground"
+          className={`md:hidden transition-colors duration-500 ${scrolled ? "text-foreground" : "text-background"}`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
         >
@@ -56,34 +76,44 @@ export function Navbar() {
         </button>
       </nav>
 
-      {mobileOpen && (
-        <div className="md:hidden border-t border-border bg-background px-6 pb-6">
-          <ul className="flex flex-col gap-4 pt-4">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="text-sm font-medium tracking-wide text-muted-foreground transition-colors hover:text-foreground uppercase"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <a
-            href="https://wa.me/5491100000000"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 block"
-          >
-            <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90 gap-2 cursor-pointer">
-              <Phone className="h-4 w-4" />
-              Consultar
-            </Button>
-          </a>
-        </div>
-      )}
+      <div
+        className={`md:hidden border-t border-border bg-background overflow-hidden transition-all duration-400 ease-in-out ${
+          mobileOpen ? "max-h-80 opacity-100 px-6 pb-6" : "max-h-0 opacity-0 px-6"
+        }`}
+      >
+        <ul className="flex flex-col gap-4 pt-4">
+          {navLinks.map((link, i) => (
+            <li
+              key={link.href}
+              className="transition-all duration-300"
+              style={{
+                transitionDelay: mobileOpen ? `${i * 50}ms` : "0ms",
+                opacity: mobileOpen ? 1 : 0,
+                transform: mobileOpen ? "translateX(0)" : "translateX(-12px)",
+              }}
+            >
+              <a
+                href={link.href}
+                className="text-sm font-medium tracking-wide text-muted-foreground transition-colors hover:text-foreground uppercase"
+                onClick={() => setMobileOpen(false)}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a
+          href="https://wa.me/5491100000000"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 block"
+        >
+          <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90 gap-2 cursor-pointer">
+            <Phone className="h-4 w-4" />
+            Consultar
+          </Button>
+        </a>
+      </div>
     </header>
   )
 }

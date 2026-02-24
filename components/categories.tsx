@@ -1,5 +1,8 @@
+"use client"
+
 import Image from "next/image"
 import { ArrowRight } from "lucide-react"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 const categories = [
   {
@@ -29,10 +32,18 @@ const categories = [
 ]
 
 export function Categories() {
+  const { ref: headingRef, isVisible: headingVisible } = useScrollAnimation()
+  const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation({ threshold: 0.05 })
+
   return (
     <section id="productos" className="py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-16 max-w-2xl">
+        <div
+          ref={headingRef}
+          className={`mb-16 max-w-2xl transition-all duration-700 ease-out ${
+            headingVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
           <p className="text-sm font-medium tracking-[0.3em] uppercase text-accent">
             Nuestros Productos
           </p>
@@ -44,25 +55,29 @@ export function Categories() {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {categories.map((cat) => (
+        <div ref={gridRef} className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {categories.map((cat, i) => (
             <a
               key={cat.title}
               href="#contacto"
-              className="group relative overflow-hidden rounded-lg bg-card border border-border transition-all hover:shadow-lg"
+              className={`group relative overflow-hidden rounded-lg bg-card border border-border transition-all duration-500 hover:shadow-lg hover:-translate-y-1 ${
+                gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+              }`}
+              style={{ transitionDelay: gridVisible ? `${i * 120}ms` : "0ms" }}
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
                   src={cat.image}
                   alt={cat.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                 />
+                <div className="absolute inset-0 bg-foreground/0 transition-colors duration-500 group-hover:bg-foreground/10" />
               </div>
               <div className="p-5">
                 <div className="flex items-center justify-between">
                   <h3 className="font-serif text-xl text-card-foreground">{cat.title}</h3>
-                  <ArrowRight className="h-4 w-4 text-accent opacity-0 transition-all group-hover:opacity-100 group-hover:translate-x-1" />
+                  <ArrowRight className="h-4 w-4 text-accent opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1" />
                 </div>
                 <p className="mt-1 text-xs font-medium tracking-wide text-accent uppercase">
                   {cat.count}

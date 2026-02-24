@@ -1,12 +1,23 @@
+"use client"
+
 import { Phone, Mail, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 export function CTA() {
+  const { ref: leftRef, isVisible: leftVisible } = useScrollAnimation()
+  const { ref: rightRef, isVisible: rightVisible } = useScrollAnimation()
+
   return (
     <section id="contacto" className="bg-primary py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div>
+          <div
+            ref={leftRef}
+            className={`transition-all duration-700 ease-out ${
+              leftVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+            }`}
+          >
             <p className="text-sm font-medium tracking-[0.3em] uppercase text-accent">
               Contacto
             </p>
@@ -18,37 +29,37 @@ export function CTA() {
             </p>
 
             <div className="mt-8 flex flex-col gap-5">
-              <div className="flex items-center gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/15">
-                  <Phone className="h-4 w-4 text-accent" />
+              {[
+                { icon: Phone, labelText: "Telefono", value: "+54 11 0000-0000" },
+                { icon: Mail, labelText: "Email", value: "ventas@wiki.com.ar" },
+                { icon: MapPin, labelText: "Direccion", value: "Buenos Aires, Argentina" },
+              ].map((item, i) => (
+                <div
+                  key={item.labelText}
+                  className={`flex items-center gap-4 transition-all duration-500 ease-out ${
+                    leftVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
+                  }`}
+                  style={{ transitionDelay: leftVisible ? `${300 + i * 120}ms` : "0ms" }}
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/15 shrink-0">
+                    <item.icon className="h-4 w-4 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-medium tracking-wide text-primary-foreground/50 uppercase">{item.labelText}</p>
+                    <p className="text-sm text-primary-foreground">{item.value}</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-xs font-medium tracking-wide text-primary-foreground/50 uppercase">Telefono</p>
-                  <p className="text-sm text-primary-foreground">+54 11 0000-0000</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/15">
-                  <Mail className="h-4 w-4 text-accent" />
-                </div>
-                <div>
-                  <p className="text-xs font-medium tracking-wide text-primary-foreground/50 uppercase">Email</p>
-                  <p className="text-sm text-primary-foreground">ventas@wiki.com.ar</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/15">
-                  <MapPin className="h-4 w-4 text-accent" />
-                </div>
-                <div>
-                  <p className="text-xs font-medium tracking-wide text-primary-foreground/50 uppercase">Direccion</p>
-                  <p className="text-sm text-primary-foreground">Buenos Aires, Argentina</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
-          <div className="rounded-lg bg-card p-8 md:p-10">
+          <div
+            ref={rightRef}
+            className={`rounded-lg bg-card p-8 md:p-10 transition-all duration-700 ease-out ${
+              rightVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
+            }`}
+            style={{ transitionDelay: "200ms" }}
+          >
             <h3 className="font-serif text-2xl text-card-foreground">
               Solicita tu lista de precios
             </h3>
@@ -64,7 +75,7 @@ export function CTA() {
                   id="name"
                   type="text"
                   placeholder="Tu nombre"
-                  className="w-full rounded-md border border-input bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="w-full rounded-md border border-input bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-ring transition-shadow duration-200"
                 />
               </div>
               <div>
@@ -75,7 +86,7 @@ export function CTA() {
                   id="email"
                   type="email"
                   placeholder="tu@email.com"
-                  className="w-full rounded-md border border-input bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="w-full rounded-md border border-input bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-ring transition-shadow duration-200"
                 />
               </div>
               <div>
@@ -86,7 +97,7 @@ export function CTA() {
                   id="phone"
                   type="tel"
                   placeholder="+54 11 ..."
-                  className="w-full rounded-md border border-input bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="w-full rounded-md border border-input bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-ring transition-shadow duration-200"
                 />
               </div>
               <div>
@@ -97,13 +108,13 @@ export function CTA() {
                   id="message"
                   rows={3}
                   placeholder="Contanos que productos necesitas..."
-                  className="w-full resize-none rounded-md border border-input bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="w-full resize-none rounded-md border border-input bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-ring transition-shadow duration-200"
                 />
               </div>
               <Button
                 type="submit"
                 size="lg"
-                className="mt-2 w-full bg-accent text-accent-foreground hover:bg-accent/90 text-base py-6 cursor-pointer"
+                className="mt-2 w-full bg-accent text-accent-foreground hover:bg-accent/90 text-base py-6 cursor-pointer transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
               >
                 Enviar consulta
               </Button>

@@ -1,4 +1,7 @@
+"use client"
+
 import { Truck, ShieldCheck, Package, BadgePercent } from "lucide-react"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 const features = [
   {
@@ -28,10 +31,18 @@ const features = [
 ]
 
 export function Features() {
+  const { ref: headingRef, isVisible: headingVisible } = useScrollAnimation()
+  const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation({ threshold: 0.05 })
+
   return (
     <section id="nosotros" className="bg-secondary py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-16 text-center">
+        <div
+          ref={headingRef}
+          className={`mb-16 text-center transition-all duration-700 ease-out ${
+            headingVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
           <p className="text-sm font-medium tracking-[0.3em] uppercase text-accent">
             Por que elegirnos
           </p>
@@ -40,13 +51,16 @@ export function Features() {
           </h2>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {features.map((f) => (
+        <div ref={gridRef} className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {features.map((f, i) => (
             <div
               key={f.title}
-              className="rounded-lg bg-card p-8 border border-border text-center transition-all hover:shadow-md"
+              className={`group rounded-lg bg-card p-8 border border-border text-center transition-all duration-500 hover:shadow-md hover:-translate-y-1 ${
+                gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+              }`}
+              style={{ transitionDelay: gridVisible ? `${i * 120}ms` : "0ms" }}
             >
-              <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-accent/10">
+              <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-accent/10 transition-all duration-500 group-hover:bg-accent/20 group-hover:scale-110">
                 <f.icon className="h-6 w-6 text-accent" />
               </div>
               <h3 className="font-serif text-lg text-card-foreground">{f.title}</h3>
