@@ -11,49 +11,44 @@ export function CatalogHero() {
   }, [])
 
   return (
-    <section className="relative h-[50vh] min-h-[360px] flex items-center justify-center overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0">
-        <Image
-          src="/images/hero-bedding.jpg"
-          alt="Blanqueria Wiki"
-          fill
-          className="object-cover transition-transform duration-[1.5s] ease-out"
-          style={{ transform: loaded ? "scale(1.05)" : "scale(1.15)" }}
-          priority
-        />
-        <div className="absolute inset-0 bg-foreground/60" />
-      </div>
+    <section className="px-6 lg:px-20 py-8">
+      <div className="relative min-h-[320px] flex flex-col gap-4 rounded-3xl items-start justify-center px-8 md:px-16 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero-bedding.jpg"
+            alt="Blanqueria Wiki"
+            fill
+            className={`object-cover transition-transform duration-[1.5s] ease-out ${
+              loaded ? "scale-100" : "scale-110"
+            }`}
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/20" />
+        </div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-6">
-        <p
-          className="text-sm font-medium uppercase tracking-[0.3em] text-background/70 mb-4 transition-all duration-700"
-          style={{
-            opacity: loaded ? 1 : 0,
-            transform: loaded ? "translateY(0)" : "translateY(20px)",
-          }}
-        >
-          Venta por mayor
-        </p>
-        <h1
-          className="font-serif text-4xl md:text-6xl lg:text-7xl text-background transition-all duration-700 delay-200"
-          style={{
-            opacity: loaded ? 1 : 0,
-            transform: loaded ? "translateY(0)" : "translateY(30px)",
-          }}
-        >
-          Nuestro Catalogo
-        </h1>
-        <p
-          className="mt-4 text-background/80 text-lg max-w-xl mx-auto leading-relaxed transition-all duration-700 delay-400"
-          style={{
-            opacity: loaded ? 1 : 0,
-            transform: loaded ? "translateY(0)" : "translateY(20px)",
-          }}
-        >
-          Explora nuestra linea completa de blanqueria. Selecciona el color que necesites para tu negocio.
-        </p>
+        <div className="relative z-10 max-w-2xl">
+          <span
+            className={`bg-primary/20 text-primary px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest inline-block w-fit backdrop-blur-sm border border-primary/30 mb-4 transition-all duration-700 ${
+              loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+          >
+            Venta por mayor
+          </span>
+          <h1
+            className={`text-card text-4xl md:text-6xl font-black leading-tight tracking-tight transition-all duration-700 delay-200 ${
+              loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            Nuestro Catalogo
+          </h1>
+          <p
+            className={`mt-4 text-card/80 text-lg max-w-xl leading-relaxed transition-all duration-700 delay-300 ${
+              loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+          >
+            Explora nuestra linea completa de blanqueria Campomayo. Selecciona el color que necesites para tu negocio.
+          </p>
+        </div>
       </div>
     </section>
   )

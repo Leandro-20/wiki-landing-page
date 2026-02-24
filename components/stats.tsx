@@ -1,63 +1,75 @@
 "use client"
 
+import Image from "next/image"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { useCounter } from "@/hooks/use-counter"
 
-const stats = [
-  { value: 15, suffix: "+", label: "Anos en el mercado" },
-  { value: 2000, suffix: "+", label: "Clientes activos", format: true },
-  { value: 300, suffix: "+", label: "Productos disponibles" },
-  { value: 24, suffix: "hs", label: "Respuesta garantizada" },
-]
-
-function StatItem({ value, suffix, label, format, isVisible, delay }: {
+function AnimatedStat({ value, label, isVisible, delay }: {
   value: number
-  suffix: string
   label: string
-  format?: boolean
   isVisible: boolean
   delay: number
 }) {
   const count = useCounter(value, isVisible)
-  const display = format
-    ? count.toLocaleString("es-AR")
-    : count.toString()
 
   return (
     <div
-      className={`text-center transition-all duration-700 ease-out ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      className={`transition-all duration-700 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      <p className="font-serif text-4xl text-accent md:text-5xl tabular-nums">
-        {display}{suffix}
-      </p>
-      <p className="mt-2 text-sm font-medium tracking-wide text-muted-foreground uppercase">
-        {label}
-      </p>
+      <p className="text-primary text-4xl font-black tabular-nums">{count}+</p>
+      <p className="text-muted-foreground text-sm font-bold uppercase tracking-wider">{label}</p>
     </div>
   )
 }
 
 export function Stats() {
-  const { ref, isVisible } = useScrollAnimation({ threshold: 0.3 })
+  const { ref: textRef, isVisible: textVisible } = useScrollAnimation()
+  const { ref: imgRef, isVisible: imgVisible } = useScrollAnimation()
 
   return (
-    <section className="py-20 md:py-24">
-      <div ref={ref} className="mx-auto max-w-7xl px-6">
-        <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
-          {stats.map((stat, i) => (
-            <StatItem
-              key={stat.label}
-              value={stat.value}
-              suffix={stat.suffix}
-              label={stat.label}
-              format={stat.format}
-              isVisible={isVisible}
-              delay={i * 150}
+    <section className="px-6 lg:px-20 py-20 overflow-hidden">
+      <div className="flex flex-col lg:flex-row gap-16 items-center max-w-7xl mx-auto">
+        {/* Text side */}
+        <div
+          ref={textRef}
+          className={`flex-1 space-y-6 transition-all duration-700 ${
+            textVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+          }`}
+        >
+          <h2 className="text-foreground text-4xl font-extrabold tracking-tight text-balance">
+            Pasion por los textiles, compromiso con la calidad
+          </h2>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            En Wiki entendemos que un buen descanso comienza con la textura correcta. Nuestra mision es democratizar el acceso a productos de alta gama, trabajando con los mejores hilados y procesos que aseguran durabilidad incluso tras multiples lavados industriales.
+          </p>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            Desde nuestro centro de distribucion, controlamos cada detalle del packaging y la logistica para que tus productos lleguen impecables a tus estantes.
+          </p>
+          <div className="grid grid-cols-2 gap-8 pt-4">
+            <AnimatedStat value={500} label="Clientes activos" isVisible={textVisible} delay={300} />
+            <AnimatedStat value={100000} label="Unidades vendidas" isVisible={textVisible} delay={450} />
+          </div>
+        </div>
+
+        {/* Image side */}
+        <div
+          ref={imgRef}
+          className={`flex-1 relative transition-all duration-700 delay-200 ${
+            imgVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
+          }`}
+        >
+          <div className="bg-primary/20 absolute -inset-4 rounded-3xl rotate-3" />
+          <div className="relative rounded-3xl shadow-2xl overflow-hidden aspect-[4/3]">
+            <Image
+              src="/images/about-quality.jpg"
+              alt="Control de calidad y empaquetado de blanqueria"
+              fill
+              className="object-cover"
             />
-          ))}
+          </div>
         </div>
       </div>
     </section>

@@ -2,34 +2,29 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { ChevronRight } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 const categories = [
   {
     title: "Sabanas",
-    description: "Juegos de sabanas en algodones premium, percal y microfibra.",
+    description: "Linea Boutique 1200H",
     image: "/images/category-sheets.jpg",
-    count: "120+ productos",
   },
   {
-    title: "Toallas",
-    description: "Toallas de bano, mano y rostro en algodon de alta absorbencia.",
+    title: "Cortinas Blackout",
+    description: "Bloquean hasta 80% de la luz",
     image: "/images/category-towels.jpg",
-    count: "80+ productos",
   },
   {
-    title: "Almohadas",
-    description: "Almohadas de fibra, viscoelastica y pluma en todos los tamanos.",
+    title: "Cortinas de Bano",
+    description: "Antihongos y antiadherente",
     image: "/images/category-pillows.jpg",
-    count: "45+ productos",
   },
   {
-    title: "Acolchados",
-    description: "Acolchados y cubrecamas en variedad de telas y rellenos.",
+    title: "Sets de Bano",
+    description: "Cortina + alfombra shaggy",
     image: "/images/category-comforters.jpg",
-    count: "60+ productos",
   },
 ]
 
@@ -38,76 +33,47 @@ export function Categories() {
   const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation({ threshold: 0.05 })
 
   return (
-    <section id="productos" className="py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-6">
-        <div
-          ref={headingRef}
-          className={`mb-16 max-w-2xl transition-all duration-700 ease-out ${
-            headingVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-          <p className="text-sm font-medium tracking-[0.3em] uppercase text-accent">
-            Nuestros Productos
-          </p>
-          <h2 className="mt-3 font-serif text-4xl text-foreground md:text-5xl text-balance">
-            Todo lo que tu negocio necesita
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-            Trabajamos con las mejores fabricas del pais para ofrecerte productos de calidad superior a precios competitivos.
-          </p>
+    <section id="categorias" className="px-6 lg:px-20 py-16">
+      <div
+        ref={headingRef}
+        className={`flex items-end justify-between mb-10 transition-all duration-700 ${
+          headingVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
+      >
+        <div className="flex flex-col gap-2">
+          <h2 className="text-foreground text-3xl font-extrabold tracking-tight">Nuestras Categorias</h2>
+          <p className="text-muted-foreground">Variedad y stock permanente en todos nuestros productos</p>
         </div>
+        <Link href="/catalogo" className="text-primary font-bold flex items-center gap-1 hover:underline hidden sm:flex">
+          Ver todas <ChevronRight className="h-4 w-4" />
+        </Link>
+      </div>
 
-        <div ref={gridRef} className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {categories.map((cat, i) => (
-            <a
-              key={cat.title}
-              href="#contacto"
-              className={`group relative overflow-hidden rounded-lg bg-card border border-border transition-all duration-500 hover:shadow-lg hover:-translate-y-1 ${
-                gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-              }`}
-              style={{ transitionDelay: gridVisible ? `${i * 120}ms` : "0ms" }}
-            >
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <Image
-                  src={cat.image}
-                  alt={cat.title}
-                  fill
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-foreground/0 transition-colors duration-500 group-hover:bg-foreground/10" />
-              </div>
-              <div className="p-5">
-                <div className="flex items-center justify-between">
-                  <h3 className="font-serif text-xl text-card-foreground">{cat.title}</h3>
-                  <ArrowRight className="h-4 w-4 text-accent opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1" />
-                </div>
-                <p className="mt-1 text-xs font-medium tracking-wide text-accent uppercase">
-                  {cat.count}
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {cat.description}
-                </p>
-              </div>
-            </a>
-          ))}
-        </div>
-
-        {/* Link to full catalog */}
-        <div
-          className={`mt-12 text-center transition-all duration-700 delay-500 ${
-            gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-          <Link href="/catalogo">
-            <Button
-              size="lg"
-              className="bg-accent text-accent-foreground hover:bg-accent/90 gap-2 cursor-pointer transition-transform duration-200 hover:scale-105 active:scale-95"
-            >
-              Ver catalogo completo
-              <ArrowRight className="h-4 w-4" />
-            </Button>
+      <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {categories.map((cat, i) => (
+          <Link
+            key={cat.title}
+            href="/catalogo"
+            className={`group relative overflow-hidden rounded-2xl aspect-[4/5] bg-secondary transition-all duration-500 ${
+              gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+            }`}
+            style={{ transitionDelay: gridVisible ? `${i * 120}ms` : "0ms" }}
+          >
+            <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-110">
+              <Image
+                src={cat.image}
+                alt={cat.title}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+            </div>
+            <div className="absolute bottom-0 left-0 p-6">
+              <h3 className="text-card text-xl font-bold">{cat.title}</h3>
+              <p className="text-card/70 text-sm">{cat.description}</p>
+            </div>
           </Link>
-        </div>
+        ))}
       </div>
     </section>
   )

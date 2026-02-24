@@ -15,11 +15,11 @@ export function CatalogGrid() {
       : products.filter((p) => p.category === activeCategory)
 
   return (
-    <section ref={ref} className="py-16 px-6">
+    <section ref={ref} className="py-12 px-6 lg:px-20">
       <div className="mx-auto max-w-7xl">
         {/* Filter tabs */}
         <div
-          className="mb-12 flex flex-wrap items-center justify-center gap-2 transition-all duration-700"
+          className="mb-10 flex flex-wrap items-center gap-3 transition-all duration-700"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? "translateY(0)" : "translateY(20px)",
@@ -29,32 +29,22 @@ export function CatalogGrid() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 cursor-pointer ${
+              className={`rounded-xl px-5 py-2.5 text-sm font-bold transition-all duration-300 cursor-pointer ${
                 activeCategory === cat
-                  ? "bg-primary text-primary-foreground shadow-md"
-                  : "bg-secondary text-muted-foreground hover:bg-secondary/80 hover:text-foreground"
+                  ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
+                  : "bg-card text-muted-foreground border border-border hover:text-foreground"
               }`}
             >
               {cat}
             </button>
           ))}
-        </div>
-
-        {/* Product count */}
-        <div
-          className="mb-8 text-center transition-all duration-500"
-          style={{
-            opacity: isVisible ? 1 : 0,
-          }}
-        >
-          <p className="text-sm text-muted-foreground">
+          <span className="text-sm text-muted-foreground ml-auto">
             {filtered.length} {filtered.length === 1 ? "producto" : "productos"}
-            {activeCategory !== "Todos" ? ` en ${activeCategory}` : " en total"}
-          </p>
+          </span>
         </div>
 
         {/* Product grid */}
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((product, i) => (
             <ProductCard
               key={product.id}

@@ -39,7 +39,7 @@ export function ProductCard({
 
   return (
     <div
-      className="group flex flex-col transition-all duration-700 ease-out"
+      className="group flex flex-col bg-card rounded-2xl border border-border overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500"
       style={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(40px)",
@@ -48,7 +48,7 @@ export function ProductCard({
     >
       {/* Image container */}
       <div
-        className="relative aspect-[4/5] overflow-hidden rounded-xl bg-secondary cursor-pointer"
+        className="relative aspect-[4/5] overflow-hidden bg-secondary cursor-pointer"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => {
           setIsHovered(false)
@@ -72,7 +72,7 @@ export function ProductCard({
 
         {/* Color name badge top left */}
         <div
-          className="absolute top-3 left-3 rounded-full bg-background/90 backdrop-blur-sm px-3 py-1 text-xs font-medium text-foreground transition-all duration-300"
+          className="absolute top-3 left-3 rounded-full bg-card/90 backdrop-blur-sm px-3 py-1 text-xs font-semibold text-card-foreground transition-all duration-300"
           style={{
             opacity: isHovered ? 1 : 0,
             transform: isHovered ? "translateY(0)" : "translateY(-8px)",
@@ -82,28 +82,25 @@ export function ProductCard({
         </div>
 
         {/* Price badge top right */}
-        <div className="absolute top-3 right-3 rounded-full bg-accent text-accent-foreground px-3 py-1.5 text-sm font-bold shadow-lg">
+        <div className="absolute top-3 right-3 rounded-full bg-primary text-primary-foreground px-3 py-1.5 text-sm font-bold shadow-lg shadow-primary/20">
           {price}
         </div>
 
         {/* Specs overlay on hover/click */}
         <div
-          className="absolute inset-x-0 bottom-0 bg-foreground/85 backdrop-blur-sm p-4 transition-all duration-400 ease-out"
+          className="absolute inset-x-0 bottom-0 bg-foreground/90 backdrop-blur-sm p-4 transition-all duration-400 ease-out"
           style={{
             transform: showSpecs || isHovered ? "translateY(0)" : "translateY(100%)",
             opacity: showSpecs || isHovered ? 1 : 0,
           }}
         >
-          <p className="text-xs font-semibold text-background/70 uppercase tracking-wider mb-2">
+          <p className="text-xs font-bold text-card/60 uppercase tracking-wider mb-2">
             Especificaciones
           </p>
           <ul className="flex flex-col gap-1">
             {specs.map((spec) => (
-              <li
-                key={spec}
-                className="text-xs text-background/90 flex items-start gap-1.5"
-              >
-                <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-accent" />
+              <li key={spec} className="text-xs text-card/90 flex items-start gap-1.5">
+                <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-primary" />
                 {spec}
               </li>
             ))}
@@ -112,12 +109,9 @@ export function ProductCard({
       </div>
 
       {/* Info */}
-      <div className="mt-4 flex flex-col gap-1.5">
+      <div className="p-5 flex flex-col gap-1.5">
         <div className="flex items-baseline justify-between gap-2">
-          <h3 className="font-serif text-xl text-foreground transition-colors duration-300 group-hover:text-accent">
-            {name}
-          </h3>
-          <span className="text-lg font-bold text-accent shrink-0">{price}</span>
+          <h3 className="text-lg font-bold text-card-foreground">{name}</h3>
         </div>
 
         <p className="text-sm text-muted-foreground">
@@ -126,7 +120,7 @@ export function ProductCard({
         </p>
 
         {/* Color swatches */}
-        <div className="mt-2 flex items-center gap-2">
+        <div className="mt-3 flex items-center gap-2">
           <span className="text-xs text-muted-foreground mr-1">Color:</span>
           {variants.map((variant, i) => (
             <button
@@ -141,7 +135,7 @@ export function ProductCard({
                 backgroundColor: variant.color,
                 boxShadow:
                   activeVariant === i
-                    ? "0 0 0 2px var(--background), 0 0 0 4px var(--accent)"
+                    ? "0 0 0 2px var(--card), 0 0 0 4px var(--primary)"
                     : "0 0 0 1px rgba(0,0,0,0.12)",
                 transform: activeVariant === i ? "scale(1.1)" : "scale(1)",
               }}
@@ -151,6 +145,16 @@ export function ProductCard({
             </button>
           ))}
         </div>
+
+        {/* WhatsApp CTA */}
+        <a
+          href={`https://wa.me/5491124097141?text=Hola! Me interesa el producto: ${name} en color ${currentVariant.name}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 flex items-center justify-center rounded-xl h-10 bg-primary text-primary-foreground text-sm font-bold hover:bg-primary/90 transition-all hover:scale-[1.02] active:scale-[0.98]"
+        >
+          Consultar por WhatsApp
+        </a>
       </div>
     </div>
   )
