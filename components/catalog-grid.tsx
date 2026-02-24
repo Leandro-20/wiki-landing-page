@@ -3,17 +3,16 @@
 import { useState } from "react"
 import { ProductCard } from "@/components/product-card"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import { products } from "@/lib/catalog-data"
-
-const categories = ["Todos", "Sabanas", "Toallas", "Almohadas", "Acolchados", "Cubrecamas", "Manteles", "Cortinas"]
+import { products, categories } from "@/lib/catalog-data"
 
 export function CatalogGrid() {
   const [activeCategory, setActiveCategory] = useState("Todos")
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.05 })
 
-  const filtered = activeCategory === "Todos"
-    ? products
-    : products.filter((p) => p.name === activeCategory)
+  const filtered =
+    activeCategory === "Todos"
+      ? products
+      : products.filter((p) => p.category === activeCategory)
 
   return (
     <section ref={ref} className="py-16 px-6">
@@ -30,7 +29,7 @@ export function CatalogGrid() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`rounded-full px-5 py-2 text-sm font-medium transition-all duration-300 cursor-pointer ${
+              className={`rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 cursor-pointer ${
                 activeCategory === cat
                   ? "bg-primary text-primary-foreground shadow-md"
                   : "bg-secondary text-muted-foreground hover:bg-secondary/80 hover:text-foreground"
@@ -41,13 +40,29 @@ export function CatalogGrid() {
           ))}
         </div>
 
+        {/* Product count */}
+        <div
+          className="mb-8 text-center transition-all duration-500"
+          style={{
+            opacity: isVisible ? 1 : 0,
+          }}
+        >
+          <p className="text-sm text-muted-foreground">
+            {filtered.length} {filtered.length === 1 ? "producto" : "productos"}
+            {activeCategory !== "Todos" ? ` en ${activeCategory}` : " en total"}
+          </p>
+        </div>
+
         {/* Product grid */}
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((product, i) => (
             <ProductCard
               key={product.id}
               name={product.name}
-              description={product.description}
+              brand={product.brand}
+              line={product.line}
+              price={product.price}
+              specs={product.specs}
               variants={product.variants}
               index={i}
               isVisible={isVisible}
@@ -57,7 +72,9 @@ export function CatalogGrid() {
 
         {/* Empty state */}
         {filtered.length === 0 && (
-          <p className="text-center text-muted-foreground py-20">No se encontraron productos.</p>
+          <p className="text-center text-muted-foreground py-20">
+            No se encontraron productos en esta categoria.
+          </p>
         )}
       </div>
     </section>

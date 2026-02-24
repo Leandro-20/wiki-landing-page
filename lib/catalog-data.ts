@@ -7,78 +7,116 @@ export interface ColorVariant {
 export interface Product {
   id: string
   name: string
-  description: string
+  category: string
+  brand: string
+  line: string
+  price: string
+  specs: string[]
   variants: ColorVariant[]
 }
 
 export const products: Product[] = [
   {
-    id: "sabanas",
-    name: "Sabanas",
-    description: "Juego de sabanas de algodon 100%. Disponibles en 1 plaza, 1 1/2 y 2 plazas. Tejido de alta densidad para mayor durabilidad.",
+    id: "sabanas-queen",
+    name: "Sabanas Queen",
+    category: "Sabanas",
+    brand: "Campomayo",
+    line: "Linea Boutique",
+    price: "$21.499",
+    specs: [
+      "Plana: 220 x 240 cm",
+      "Ajustable: 160 x 200 x 30 cm",
+      "Fundas: 50 x 75 cm",
+      "100% Cotton Touch",
+      "1200H",
+      "Suaves y frescas",
+    ],
     variants: [
-      { name: "Blanco", color: "#F5F5F0", image: "/images/catalog/sabanas-blanco.jpg" },
-      { name: "Rojo", color: "#8B2232", image: "/images/catalog/sabanas-rojo.jpg" },
-      { name: "Azul", color: "#1B3A5C", image: "/images/catalog/sabanas-azul.jpg" },
+      { name: "Blanco", color: "#F5F5F0", image: "/images/catalog/sabanas-queen-blanco.jpg" },
+      { name: "Gris", color: "#8C8C8C", image: "/images/catalog/sabanas-queen-gris.jpg" },
+      { name: "Rosa", color: "#D4A0A0", image: "/images/catalog/sabanas-queen-rosa.jpg" },
     ],
   },
   {
-    id: "toallas",
-    name: "Toallas",
-    description: "Toallas de bano 100% algodon con gran capacidad de absorcion. Toallon, toalla de mano y toalla facial.",
+    id: "sabanas-king",
+    name: "Sabanas King",
+    category: "Sabanas",
+    brand: "Campomayo",
+    line: "Linea Boutique",
+    price: "$23.499",
+    specs: [
+      "Plana: 280 x 260 cm",
+      "Ajustable: 200 x 200 x 35 cm",
+      "Fundas: 50 x 100 cm",
+      "100% Cotton Touch",
+      "1200H",
+      "Suaves y frescas",
+    ],
     variants: [
-      { name: "Blanco", color: "#F5F5F0", image: "/images/catalog/toallas-blanco.jpg" },
-      { name: "Gris", color: "#8C8C8C", image: "/images/catalog/toallas-gris.jpg" },
-      { name: "Crema", color: "#D4C5A9", image: "/images/catalog/toallas-crema.jpg" },
+      { name: "Blanco", color: "#F5F5F0", image: "/images/catalog/sabanas-king-blanco.jpg" },
+      { name: "Gris", color: "#8C8C8C", image: "/images/catalog/sabanas-king-gris.jpg" },
+      { name: "Rosa", color: "#D4A0A0", image: "/images/catalog/sabanas-king-rosa.jpg" },
     ],
   },
   {
-    id: "almohadas",
-    name: "Almohadas",
-    description: "Almohadas de fibra siliconada con funda de algodon. Firmeza media, ideales para todo tipo de descanso.",
+    id: "cortinas-blackout",
+    name: "Cortinas Blackout",
+    category: "Cortinas",
+    brand: "Campomayo",
+    line: "",
+    price: "$19.599",
+    specs: [
+      "2 panos de 140 x 220 cm c/u",
+      "Bloquean hasta el 80% de la luz",
+      "Conservan la temperatura ambiente",
+      "Presillas y barral ocultos y reforzados",
+    ],
     variants: [
-      { name: "Blanco", color: "#F5F5F0", image: "/images/catalog/almohadas-blanco.jpg" },
-      { name: "Gris", color: "#8C8C8C", image: "/images/catalog/almohadas-gris.jpg" },
+      { name: "Gris", color: "#8C8C8C", image: "/images/catalog/blackout-gris.jpg" },
+      { name: "Negro", color: "#2A2A2A", image: "/images/catalog/blackout-negro.jpg" },
+      { name: "Crema", color: "#D4C5A9", image: "/images/catalog/blackout-crema.jpg" },
     ],
   },
   {
-    id: "acolchados",
-    name: "Acolchados",
-    description: "Acolchados de microfibra con relleno termico. Liviano y abrigado, perfecto para todas las estaciones.",
+    id: "cortina-bano",
+    name: "Cortina de Bano",
+    category: "Bano",
+    brand: "Campomayo",
+    line: "",
+    price: "$9.900",
+    specs: [
+      "Programada (lista para usar)",
+      "No necesita protector",
+      "Antihongos",
+      "Antiadherente",
+      "Ganchos argolla reforzados",
+      "180 x 180 cm",
+    ],
     variants: [
-      { name: "Blanco", color: "#F5F5F0", image: "/images/catalog/acolchados-blanco.jpg" },
-      { name: "Azul", color: "#1B3A5C", image: "/images/catalog/acolchados-azul.jpg" },
-      { name: "Rojo", color: "#8B2232", image: "/images/catalog/acolchados-rojo.jpg" },
+      { name: "Blanco", color: "#F5F5F0", image: "/images/catalog/cortina-bano-blanco.jpg" },
+      { name: "Gris", color: "#8C8C8C", image: "/images/catalog/cortina-bano-gris.jpg" },
+      { name: "Azul", color: "#1B3A5C", image: "/images/catalog/cortina-bano-azul.jpg" },
     ],
   },
   {
-    id: "cubrecamas",
-    name: "Cubrecamas",
-    description: "Cubrecamas con textura labrada de algodon. Terminacion premium con costuras reforzadas.",
-    variants: [
-      { name: "Crema", color: "#D4C5A9", image: "/images/catalog/cubrecamas-crema.jpg" },
-      { name: "Gris", color: "#8C8C8C", image: "/images/catalog/cubrecamas-gris.jpg" },
-      { name: "Azul", color: "#1B3A5C", image: "/images/catalog/cubrecamas-azul.jpg" },
+    id: "set-bano",
+    name: "Set de Bano",
+    category: "Bano",
+    brand: "Campomayo",
+    line: "",
+    price: "$9.999",
+    specs: [
+      "Cortina de bano 178 x 173 cm",
+      "12 ganchos incluidos",
+      "Alfombra shaggy (pelo extra large)",
+      "Alfombra 40 x 60 cm",
     ],
-  },
-  {
-    id: "manteles",
-    name: "Manteles",
-    description: "Manteles de algodon para mesa rectangular y redonda. Resistentes al lavado frecuente.",
     variants: [
-      { name: "Blanco", color: "#F5F5F0", image: "/images/catalog/manteles-blanco.jpg" },
-      { name: "Rojo", color: "#8B2232", image: "/images/catalog/manteles-rojo.jpg" },
-      { name: "Crema", color: "#D4C5A9", image: "/images/catalog/manteles-crema.jpg" },
-    ],
-  },
-  {
-    id: "cortinas",
-    name: "Cortinas",
-    description: "Cortinas de voile y blackout. Caida suave y elegante, con sistema de presillas o trabillas.",
-    variants: [
-      { name: "Blanco", color: "#F5F5F0", image: "/images/catalog/cortinas-blanco.jpg" },
-      { name: "Gris", color: "#8C8C8C", image: "/images/catalog/cortinas-gris.jpg" },
-      { name: "Azul", color: "#1B3A5C", image: "/images/catalog/cortinas-azul.jpg" },
+      { name: "Blanco", color: "#F5F5F0", image: "/images/catalog/set-bano-blanco.jpg" },
+      { name: "Gris", color: "#8C8C8C", image: "/images/catalog/set-bano-gris.jpg" },
+      { name: "Rosa", color: "#D4A0A0", image: "/images/catalog/set-bano-rosa.jpg" },
     ],
   },
 ]
+
+export const categories = ["Todos", "Sabanas", "Cortinas", "Bano"]

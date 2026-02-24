@@ -6,7 +6,8 @@ import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
   title: "Catalogo - Wiki Blanqueria por Mayor",
-  description: "Explora nuestro catalogo completo de blanqueria por mayor. Sabanas, toallas, almohadas, acolchados, cubrecamas, manteles y cortinas en todos los colores.",
+  description:
+    "Catalogo completo Campomayo: sabanas queen y king 1200H, cortinas blackout, cortinas de bano y sets de bano. Precios mayoristas.",
 }
 
 export default function CatalogoPage() {
