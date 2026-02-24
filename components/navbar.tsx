@@ -1,14 +1,16 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
 import { Menu, X, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const navLinks = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Productos", href: "#productos" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Inicio", href: "/#inicio" },
+  { label: "Catalogo", href: "/catalogo" },
+  { label: "Productos", href: "/#productos" },
+  { label: "Nosotros", href: "/#nosotros" },
+  { label: "Contacto", href: "/#contacto" },
 ]
 
 export function Navbar() {
@@ -30,26 +32,26 @@ export function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a
-          href="#inicio"
+        <Link
+          href="/"
           className={`font-serif text-3xl tracking-tight transition-colors duration-500 ${
             scrolled ? "text-foreground" : "text-background"
           }`}
         >
           Wiki
-        </a>
+        </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a
+              <Link
                 href={link.href}
                 className={`text-sm font-medium tracking-wide uppercase transition-colors duration-300 hover:text-accent ${
                   scrolled ? "text-muted-foreground" : "text-background/80 hover:text-background"
                 }`}
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -92,13 +94,13 @@ export function Navbar() {
                 transform: mobileOpen ? "translateX(0)" : "translateX(-12px)",
               }}
             >
-              <a
+              <Link
                 href={link.href}
                 className="text-sm font-medium tracking-wide text-muted-foreground transition-colors hover:text-foreground uppercase"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

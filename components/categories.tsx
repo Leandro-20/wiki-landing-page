@@ -1,7 +1,9 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { ArrowRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 const categories = [
@@ -88,6 +90,23 @@ export function Categories() {
               </div>
             </a>
           ))}
+        </div>
+
+        {/* Link to full catalog */}
+        <div
+          className={`mt-12 text-center transition-all duration-700 delay-500 ${
+            gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          <Link href="/catalogo">
+            <Button
+              size="lg"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 gap-2 cursor-pointer transition-transform duration-200 hover:scale-105 active:scale-95"
+            >
+              Ver catalogo completo
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
