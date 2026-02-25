@@ -21,17 +21,6 @@ export function Footer() {
             Expertos en textiles para el hogar y hoteleria. Calidad premium con
             precios mayoristas.
           </p>
-          <div className="flex gap-3">
-            <a
-              href="https://instagram.com/casawiki"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all"
-              aria-label="Seguinos en Instagram"
-            >
-              <Instagram className="h-4 w-4" />
-            </a>
-          </div>
         </div>
 
         {/* Categorías */}

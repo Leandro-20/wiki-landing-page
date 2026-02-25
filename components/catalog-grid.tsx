@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { ProductCard } from "@/components/product-card";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { products, categories } from "@/lib/catalog-data";
@@ -10,6 +11,7 @@ interface CatalogGridProps {
 }
 
 export function CatalogGrid({ initialCategory }: CatalogGridProps) {
+  const searchParams = useSearchParams();
   // Memoize the valid categories to avoid recalculation
   const validCategories = useMemo(() => categories, []);
 
@@ -29,6 +31,18 @@ export function CatalogGrid({ initialCategory }: CatalogGridProps) {
   const [activeCategory, setActiveCategory] = useState<string>(() =>
     getInitialCategory(),
   );
+
+  // Listen for URL changes and update the filter
+  useEffect(() => {
+    const urlCategory = searchParams.get("categoria");
+    if (urlCategory) {
+      const decoded = decodeURIComponent(urlCategory);
+      if (validCategories.includes(decoded)) {
+        setActiveCategory(decoded);
+      }
+    }
+  }, [searchParams, validCategories]);
+
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.05 });
 
   const filtered =
