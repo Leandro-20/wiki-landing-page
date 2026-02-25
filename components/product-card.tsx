@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 interface ColorVariant {
   name: string
@@ -70,6 +71,46 @@ export function ProductCard({
           />
         </div>
 
+        {/* Arrow navigation */}
+        {variants.length > 1 && (
+          <>
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                const prev = activeVariant === 0 ? variants.length - 1 : activeVariant - 1
+                setActiveVariant(prev)
+                setImageLoaded(false)
+                setTimeout(() => setImageLoaded(true), 50)
+              }}
+              className="absolute left-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center text-card-foreground shadow-md transition-all duration-300 hover:bg-card hover:scale-110 cursor-pointer"
+              style={{
+                opacity: isHovered ? 1 : 0,
+                transform: isHovered ? "translate(0, -50%)" : "translate(-8px, -50%)",
+              }}
+              aria-label="Color anterior"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                const next = activeVariant === variants.length - 1 ? 0 : activeVariant + 1
+                setActiveVariant(next)
+                setImageLoaded(false)
+                setTimeout(() => setImageLoaded(true), 50)
+              }}
+              className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center text-card-foreground shadow-md transition-all duration-300 hover:bg-card hover:scale-110 cursor-pointer"
+              style={{
+                opacity: isHovered ? 1 : 0,
+                transform: isHovered ? "translate(0, -50%)" : "translate(8px, -50%)",
+              }}
+              aria-label="Color siguiente"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </>
+        )}
+
         {/* Color name badge top left */}
         <div
           className="absolute top-3 left-3 rounded-full bg-card/90 backdrop-blur-sm px-3 py-1 text-xs font-semibold text-card-foreground transition-all duration-300"
@@ -85,6 +126,30 @@ export function ProductCard({
         <div className="absolute top-3 right-3 rounded-full bg-primary text-primary-foreground px-3 py-1.5 text-sm font-bold shadow-lg shadow-primary/20">
           {price}
         </div>
+
+        {/* Dot indicators */}
+        {variants.length > 1 && (
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10">
+            {variants.map((_, i) => (
+              <button
+                key={i}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setActiveVariant(i)
+                  setImageLoaded(false)
+                  setTimeout(() => setImageLoaded(true), 50)
+                }}
+                className="h-2 rounded-full transition-all duration-300 cursor-pointer"
+                style={{
+                  width: activeVariant === i ? "16px" : "8px",
+                  backgroundColor: activeVariant === i ? "var(--primary)" : "rgba(255,255,255,0.6)",
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.3)",
+                }}
+                aria-label={`Ver ${variants[i].name}`}
+              />
+            ))}
+          </div>
+        )}
 
         {/* Specs overlay on hover/click */}
         <div
