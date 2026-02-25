@@ -48,9 +48,10 @@ export function Stats() {
           <p className="text-muted-foreground text-lg leading-relaxed">
             Desde nuestro centro de distribucion, controlamos cada detalle del packaging y la logistica para que tus productos lleguen impecables a tus estantes.
           </p>
-          <div className="grid grid-cols-2 gap-8 pt-4">
-            <AnimatedStat value={500} label="Clientes activos" isVisible={textVisible} delay={300} />
-            <AnimatedStat value={100000} label="Unidades vendidas" isVisible={textVisible} delay={450} />
+          <div className="grid grid-cols-3 gap-8 pt-4">
+            <AnimatedStat value={2} label="Años en el mercado" isVisible={textVisible} delay={300} />
+            <AnimatedStat value={500} label="Clientes activos" isVisible={textVisible} delay={450} />
+            <AnimatedStat value={100000} label="Unidades vendidas" isVisible={textVisible} delay={600} />
           </div>
         </div>
 
