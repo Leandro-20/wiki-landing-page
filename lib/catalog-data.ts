@@ -103,7 +103,7 @@ export const products: Product[] = [
     name: "Set de Baño",
     category: "Baño",
     brand: "Campomayo",
-    line: "",
+    line: "Linea Lessia",
     price: "$9.999",
     specs: [
       "Cortina de baño 178 x 173 cm",
@@ -112,9 +112,11 @@ export const products: Product[] = [
       "Alfombra 40 x 60 cm",
     ],
     variants: [
-      { name: "Blanco", color: "#F5F5F0", image: "/images/catalog/set-bano-blanco.jpg" },
-      { name: "Gris", color: "#8C8C8C", image: "/images/catalog/set-bano-gris.jpg" },
-      { name: "Rosa", color: "#D4A0A0", image: "/images/catalog/set-bano-rosa.jpg" },
+      { name: "Beige", color: "#C4A882", image: "/images/catalog/set-bano-beige.jpg" },
+      { name: "Azul", color: "#1B2D5A", image: "/images/catalog/set-bano-azul.jpg" },
+      { name: "Gris Claro", color: "#A8A8A8", image: "/images/catalog/set-bano-gris-claro.jpg" },
+      { name: "Gris", color: "#6B6B6B", image: "/images/catalog/set-bano-gris.jpg" },
+      { name: "Negro", color: "#1A1A1A", image: "/images/catalog/set-bano-negro.jpg" },
     ],
   },
   {
