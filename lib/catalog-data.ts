@@ -80,17 +80,8 @@ export const products: Product[] = [
       "Presillas y barral ocultos y reforzados",
     ],
     variants: [
-      { name: "Negro", color: "#1A1A1A", image: "/images/catalog/blackout-gris-oscuro.jpg" },
       { name: "Gris Oscuro", color: "#4A4A4A", image: "/images/catalog/blackout-gris-oscuro.jpg" },
-      { name: "Gris Medio", color: "#808080", image: "/images/catalog/blackout-gris-medio.jpg" },
-      { name: "Gris Claro", color: "#B0B0B0", image: "/images/catalog/blackout-gris-medio.jpg" },
-      { name: "Blanco", color: "#F5F5F0", image: "/images/catalog/blackout-gris-medio.jpg" },
-      { name: "Natural", color: "#D4C5A9", image: "/images/catalog/blackout-gris-medio.jpg" },
-      { name: "Bizon", color: "#8B6914", image: "/images/catalog/blackout-gris-oscuro.jpg" },
-      { name: "Toasted", color: "#A0785A", image: "/images/catalog/blackout-gris-medio.jpg" },
-      { name: "Bordo", color: "#6B1C2A", image: "/images/catalog/blackout-gris-oscuro.jpg" },
-      { name: "Azul", color: "#1B2D5A", image: "/images/catalog/blackout-gris-oscuro.jpg" },
-      { name: "Verde", color: "#2D5A3A", image: "/images/catalog/blackout-gris-oscuro.jpg" },
+      { name: "Gris", color: "#808080", image: "/images/catalog/blackout-gris-medio.jpg" },
     ],
   },
   {
