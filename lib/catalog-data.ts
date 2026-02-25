@@ -111,11 +111,11 @@ export const products: Product[] = [
       "Alfombra 40 x 60 cm",
     ],
     images: [
-      "/images/catalog/set-bano-beige.jpg",
-      "/images/catalog/set-bano-azul.jpg",
-      "/images/catalog/set-bano-gris-claro.jpg",
-      "/images/catalog/set-bano-gris.jpg",
+      "/images/catalog/set-bano-gris-oscuro.jpg",
       "/images/catalog/set-bano-negro.jpg",
+      "/images/catalog/set-bano-beige.jpg",
+      "/images/catalog/set-bano-gris-claro.jpg",
+      "/images/catalog/set-bano-azul.jpg",
     ],
   },
   {
