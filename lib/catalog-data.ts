@@ -100,14 +100,8 @@ export const products: Product[] = [
       "Dorado o Plateado",
     ],
     variants: [
-      { name: "Confetti Plateado", color: "#C0C0C0", image: "/images/catalog/cortina-bano-confetti-plata.jpg" },
-      { name: "Confetti Dorado", color: "#D4AF37", image: "/images/catalog/cortina-bano-confetti-oro.jpg" },
-      { name: "Hexágonos Plateado", color: "#A8A8A8", image: "/images/catalog/cortina-bano-hexagonos-plata.jpg" },
-      { name: "Hexágonos Dorado", color: "#C5A03F", image: "/images/catalog/cortina-bano-hexagonos-oro.jpg" },
-      { name: "Enrejado Plateado", color: "#B0B0B0", image: "/images/catalog/cortina-bano-enrejado-plata.jpg" },
-      { name: "Enrejado Dorado", color: "#BFA24A", image: "/images/catalog/cortina-bano-enrejado-oro.jpg" },
-      { name: "Ramas Plateado", color: "#9E9E9E", image: "/images/catalog/cortina-bano-ramas-plata.jpg" },
-      { name: "Ramas Dorado", color: "#B8963E", image: "/images/catalog/cortina-bano-ramas-oro.jpg" },
+      { name: "Plateado", color: "#C0C0C0", image: "/images/catalog/cortina-bano-confetti-plata.jpg" },
+      { name: "Dorado", color: "#D4AF37", image: "/images/catalog/cortina-bano-confetti-oro.jpg" },
     ],
   },
   {
