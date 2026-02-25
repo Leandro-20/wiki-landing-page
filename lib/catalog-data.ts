@@ -79,8 +79,8 @@ export const products: Product[] = [
   },
   {
     id: "cortina-bano",
-    name: "Cortina de Bano",
-    category: "Bano",
+    name: "Cortina de Baño",
+    category: "Baño",
     brand: "Campomayo",
     line: "",
     price: "$9.900",
@@ -100,8 +100,8 @@ export const products: Product[] = [
   },
   {
     id: "set-bano",
-    name: "Set de Bano",
-    category: "Bano",
+    name: "Set de Baño",
+    category: "Baño",
     brand: "Campomayo",
     line: "",
     price: "$9.999",
@@ -119,4 +119,4 @@ export const products: Product[] = [
   },
 ]
 
-export const categories = ["Todos", "Sabanas", "Cortinas", "Bano"]
+export const categories = ["Todos", "Sabanas", "Cortinas", "Baño"]
