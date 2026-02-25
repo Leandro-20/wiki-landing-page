@@ -7,7 +7,7 @@ import { Menu, X, Search } from "lucide-react"
 const navLinks = [
   { label: "Sabanas", href: "/#categorias" },
   { label: "Cortinas", href: "/#categorias" },
-  { label: "Bano", href: "/#categorias" },
+  { label: "Baño", href: "/#categorias" },
   { label: "Beneficios", href: "/#beneficios" },
   { label: "Mayoristas", href: "/#registro" },
 ]

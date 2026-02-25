@@ -7,7 +7,7 @@ import { Footer } from "@/components/footer"
 export const metadata: Metadata = {
   title: "Catalogo - Wiki Blanqueria por Mayor",
   description:
-    "Catalogo completo Campomayo: sabanas queen y king 1200H, cortinas blackout, cortinas de bano y sets de bano. Precios mayoristas.",
+    "Catalogo completo Campomayo: sabanas queen y king 1200H, cortinas blackout, cortinas de baño y sets de baño. Precios mayoristas.",
 }
 
 export default function CatalogoPage() {

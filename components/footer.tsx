@@ -37,8 +37,8 @@ export function Footer() {
           <ul className="space-y-4 text-sm text-muted-foreground">
             <li><Link href="/catalogo" className="hover:text-primary transition-colors">Sabanas Campomayo</Link></li>
             <li><Link href="/catalogo" className="hover:text-primary transition-colors">Cortinas Blackout</Link></li>
-            <li><Link href="/catalogo" className="hover:text-primary transition-colors">Cortinas de Bano</Link></li>
-            <li><Link href="/catalogo" className="hover:text-primary transition-colors">Sets de Bano</Link></li>
+            <li><Link href="/catalogo" className="hover:text-primary transition-colors">Cortinas de Baño</Link></li>
+            <li><Link href="/catalogo" className="hover:text-primary transition-colors">Sets de Baño</Link></li>
           </ul>
         </div>
 

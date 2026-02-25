@@ -17,12 +17,12 @@ const categories = [
     image: "/images/category-towels.jpg",
   },
   {
-    title: "Cortinas de Bano",
+    title: "Cortinas de Baño",
     description: "Antihongos y antiadherente",
     image: "/images/category-pillows.jpg",
   },
   {
-    title: "Sets de Bano",
+    title: "Sets de Baño",
     description: "Cortina + alfombra shaggy",
     image: "/images/category-comforters.jpg",
   },
