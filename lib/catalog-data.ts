@@ -32,9 +32,9 @@ export const products: Product[] = [
       "Suaves y frescas",
     ],
     variants: [
-      { name: "Blanco", color: "#F5F5F0", image: "/images/catalog/sabanas-queen-blanco.jpg" },
-      { name: "Gris", color: "#8C8C8C", image: "/images/catalog/sabanas-queen-gris.jpg" },
-      { name: "Rosa", color: "#D4A0A0", image: "/images/catalog/sabanas-queen-rosa.jpg" },
+      { name: "Blanco", color: "#F0EDE8", image: "/images/catalog/sabanas-queen-blanco.jpg" },
+      { name: "Gris Claro", color: "#B0ADA8", image: "/images/catalog/sabanas-queen-gris-claro.jpg" },
+      { name: "Gris", color: "#5C5C5C", image: "/images/catalog/sabanas-queen-gris.jpg" },
     ],
   },
   {
