@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { Suspense } from "react"
 import { Navbar } from "@/components/navbar"
 import { CatalogHero } from "@/components/catalog-hero"
 import { CatalogGrid } from "@/components/catalog-grid"
@@ -15,7 +16,9 @@ export default function CatalogoPage() {
     <main>
       <Navbar />
       <CatalogHero />
-      <CatalogGrid />
+      <Suspense fallback={null}>
+        <CatalogGrid />
+      </Suspense>
       <Footer />
     </main>
   )
