@@ -127,7 +127,7 @@ export const products: Product[] = [
     line: "Ultra Suave",
     price: "$7.900",
     specs: [
-      "600 gms",
+      "600g",
       "Toallón 70 x 140 cm",
       "Toalla 46 x 96 cm",
     ],
