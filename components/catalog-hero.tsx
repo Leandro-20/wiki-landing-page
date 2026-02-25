@@ -39,7 +39,7 @@ export function CatalogHero() {
               loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            Catalogo Mayorista
+            Catálogo Mayorista
           </h1>
           <p
             className={`mt-4 text-card/80 text-lg max-w-xl leading-relaxed transition-all duration-700 delay-300 ${
