@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X, Search } from "lucide-react"
 
 const navLinks = [
@@ -33,13 +34,15 @@ export function Navbar() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-20 py-4">
         {/* Logo + Desktop Nav */}
         <div className="flex items-center gap-8">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <svg className="w-4 h-4 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-              </svg>
-            </div>
-            <span className="text-xl font-extrabold tracking-tight text-foreground">Casa Wiki</span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/logo-casa-wiki.png"
+              alt="Casa Wiki - Tu Blanqueria Online"
+              width={140}
+              height={56}
+              className="h-10 w-auto object-contain"
+              priority
+            />
           </Link>
 
           <ul className="hidden lg:flex items-center gap-8">
