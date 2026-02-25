@@ -66,7 +66,7 @@ export const products: Product[] = [
     line: "",
     price: "$19.599",
     specs: [
-      "2 panos de 140 x 220 cm c/u",
+      "2 paños de 140 x 220 cm c/u",
       "Bloquean hasta el 80% de la luz",
       "Conservan la temperatura ambiente",
       "Presillas y barral ocultos y reforzados",
@@ -106,7 +106,7 @@ export const products: Product[] = [
     line: "",
     price: "$9.999",
     specs: [
-      "Cortina de bano 178 x 173 cm",
+      "Cortina de baño 178 x 173 cm",
       "12 ganchos incluidos",
       "Alfombra shaggy (pelo extra large)",
       "Alfombra 40 x 60 cm",

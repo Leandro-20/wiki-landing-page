@@ -6,7 +6,7 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 const perks = [
   "Compra minima inicial super accesible",
   "Material fotografico para tus redes",
-  "Stock garantizado todo el ano",
+  "Stock garantizado todo el año",
 ]
 
 export function CTA() {
