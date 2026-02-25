@@ -39,14 +39,14 @@ export function CatalogHero() {
               loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            Nuestro Catalogo
+            Catalogo Mayorista
           </h1>
           <p
             className={`mt-4 text-card/80 text-lg max-w-xl leading-relaxed transition-all duration-700 delay-300 ${
               loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
-            Explora nuestra linea completa de blanqueria Campomayo. Selecciona el color que necesites para tu negocio.
+            {'Explora nuestros articulos y elegí productos ganadores para tu negocio.'}
           </p>
         </div>
       </div>
