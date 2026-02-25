@@ -53,9 +53,9 @@ export const products: Product[] = [
       "Suaves y frescas",
     ],
     variants: [
-      { name: "Blanco", color: "#F5F5F0", image: "/images/catalog/sabanas-king-blanco.jpg" },
-      { name: "Gris", color: "#8C8C8C", image: "/images/catalog/sabanas-king-gris.jpg" },
-      { name: "Rosa", color: "#D4A0A0", image: "/images/catalog/sabanas-king-rosa.jpg" },
+      { name: "Gris Oscuro", color: "#5C5C5C", image: "/images/catalog/sabanas-king-gris-oscuro.jpg" },
+      { name: "Gris Claro", color: "#B0ADA8", image: "/images/catalog/sabanas-king-gris-claro.jpg" },
+      { name: "Beige", color: "#D4C5A0", image: "/images/catalog/sabanas-king-beige.jpg" },
     ],
   },
   {
