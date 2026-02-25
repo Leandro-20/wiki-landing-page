@@ -41,7 +41,7 @@ export function Categories() {
         }`}
       >
         <div className="flex flex-col gap-2">
-          <h2 className="text-foreground text-3xl font-extrabold tracking-tight">Nuestras Categorias</h2>
+          <h2 className="text-foreground text-3xl font-extrabold tracking-tight">Nuestros Productos</h2>
           <p className="text-muted-foreground">Variedad y stock permanente en todos nuestros productos</p>
         </div>
         <Link href="/catalogo" className="text-primary font-bold flex items-center gap-1 hover:underline hidden sm:flex">
