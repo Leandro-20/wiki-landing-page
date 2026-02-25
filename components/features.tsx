@@ -6,8 +6,8 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 const features = [
   {
     icon: Truck,
-    title: "Envios a todo el pais",
-    description: "Despachamos en 24hs a cualquier punto del pais a traves de transportes lideres.",
+    title: "Envios a todo el país",
+    description: "Despachamos en 24hs a cualquier punto del país a través de transportes líderes.",
   },
   {
     icon: Factory,
@@ -16,8 +16,8 @@ const features = [
   },
   {
     icon: HeadphonesIcon,
-    title: "Atencion personalizada",
-    description: "Un asesor especializado te acompanara en cada pedido para optimizar tu stock.",
+    title: "Atención personalizada",
+    description: "Un asesor especializado te acompañará en cada pedido para optimizar tu stock.",
   },
 ]
 
@@ -34,10 +34,10 @@ export function Features() {
         }`}
       >
         <h2 className="text-foreground text-4xl font-extrabold tracking-tight mb-4">
-          {"Por que elegir Wiki?"}
+          {"¿Por qué elegir Wiki?"}
         </h2>
         <p className="text-muted-foreground text-lg">
-          Llevamos 2 anos siendo el socio estrategico de comercios textiles en todo el pais.
+          Llevamos 2 años siendo el socio estratégico de comercios textiles en todo el país.
         </p>
       </div>
 
