@@ -53,7 +53,7 @@ export function CatalogGrid() {
               line={product.line}
               price={product.price}
               specs={product.specs}
-              variants={product.variants}
+              images={product.images}
               index={i}
               isVisible={isVisible}
             />

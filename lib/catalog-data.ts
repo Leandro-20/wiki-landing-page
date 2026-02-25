@@ -1,10 +1,3 @@
-export interface ColorVariant {
-  name: string
-  color: string
-  image: string
-  images?: string[]
-}
-
 export interface Product {
   id: string
   name: string
@@ -13,7 +6,7 @@ export interface Product {
   line: string
   price: string
   specs: string[]
-  variants: ColorVariant[]
+  images: string[]
 }
 
 export const products: Product[] = [
@@ -32,14 +25,11 @@ export const products: Product[] = [
       "1200H",
       "Suaves y frescas",
     ],
-    variants: [
-      { name: "Blanco", color: "#FFFFFF", image: "/images/catalog/sabanas-queen-blanco.jpg" },
-      { name: "Blanco Tiza", color: "#F0EDE8", image: "/images/catalog/sabanas-queen-blanco.jpg" },
-      { name: "Gris Oscuro", color: "#4A4A4A", image: "/images/catalog/sabanas-queen-gris.jpg" },
-      { name: "Gris Medio", color: "#808080", image: "/images/catalog/sabanas-queen-gris-claro.jpg" },
-      { name: "Gris Claro", color: "#B0ADA8", image: "/images/catalog/sabanas-queen-gris-claro.jpg" },
-      { name: "Beige", color: "#C8B68E", image: "/images/catalog/sabanas-queen-beige.jpg" },
-      { name: "Beige Crema", color: "#D4C5A0", image: "/images/catalog/sabanas-queen-beige.jpg" },
+    images: [
+      "/images/catalog/sabanas-queen-blanco.jpg",
+      "/images/catalog/sabanas-queen-beige.jpg",
+      "/images/catalog/sabanas-queen-gris-claro.jpg",
+      "/images/catalog/sabanas-queen-gris.jpg",
     ],
   },
   {
@@ -57,14 +47,10 @@ export const products: Product[] = [
       "1200H",
       "Suaves y frescas",
     ],
-    variants: [
-      { name: "Blanco", color: "#FFFFFF", image: "/images/catalog/sabanas-king-gris-claro.jpg" },
-      { name: "Blanco Tiza", color: "#F0EDE8", image: "/images/catalog/sabanas-king-gris-claro.jpg" },
-      { name: "Gris Oscuro", color: "#4A4A4A", image: "/images/catalog/sabanas-king-gris-oscuro.jpg" },
-      { name: "Gris Medio", color: "#808080", image: "/images/catalog/sabanas-king-gris-oscuro.jpg" },
-      { name: "Gris Claro", color: "#B0ADA8", image: "/images/catalog/sabanas-king-gris-claro.jpg" },
-      { name: "Beige", color: "#C8B68E", image: "/images/catalog/sabanas-king-beige.jpg" },
-      { name: "Beige Crema", color: "#D4C5A0", image: "/images/catalog/sabanas-king-beige.jpg" },
+    images: [
+      "/images/catalog/sabanas-king-gris-oscuro.jpg",
+      "/images/catalog/sabanas-king-gris-claro.jpg",
+      "/images/catalog/sabanas-king-beige.jpg",
     ],
   },
   {
@@ -80,9 +66,9 @@ export const products: Product[] = [
       "Conservan la temperatura ambiente",
       "Presillas y barral ocultos y reforzados",
     ],
-    variants: [
-      { name: "Gris Oscuro", color: "#4A4A4A", image: "/images/catalog/blackout-gris-oscuro.jpg" },
-      { name: "Gris", color: "#808080", image: "/images/catalog/blackout-gris-medio.jpg" },
+    images: [
+      "/images/catalog/blackout-gris-oscuro.jpg",
+      "/images/catalog/blackout-gris-medio.jpg",
     ],
   },
   {
@@ -100,29 +86,15 @@ export const products: Product[] = [
       "180 x 180 cm",
       "Dorado o Plateado",
     ],
-    variants: [
-      {
-        name: "Plateado",
-        color: "#C0C0C0",
-        image: "/images/catalog/cortina-bano-confetti-plata.jpg",
-        images: [
-          "/images/catalog/cortina-bano-confetti-plata.jpg",
-          "/images/catalog/cortina-bano-hexagonos-plata.jpg",
-          "/images/catalog/cortina-bano-enrejado-plata.jpg",
-          "/images/catalog/cortina-bano-ramas-plata.jpg",
-        ],
-      },
-      {
-        name: "Dorado",
-        color: "#D4AF37",
-        image: "/images/catalog/cortina-bano-confetti-oro.jpg",
-        images: [
-          "/images/catalog/cortina-bano-confetti-oro.jpg",
-          "/images/catalog/cortina-bano-hexagonos-oro.jpg",
-          "/images/catalog/cortina-bano-enrejado-oro.jpg",
-          "/images/catalog/cortina-bano-ramas-oro.jpg",
-        ],
-      },
+    images: [
+      "/images/catalog/cortina-bano-confetti-plata.jpg",
+      "/images/catalog/cortina-bano-hexagonos-plata.jpg",
+      "/images/catalog/cortina-bano-enrejado-plata.jpg",
+      "/images/catalog/cortina-bano-ramas-plata.jpg",
+      "/images/catalog/cortina-bano-confetti-oro.jpg",
+      "/images/catalog/cortina-bano-hexagonos-oro.jpg",
+      "/images/catalog/cortina-bano-enrejado-oro.jpg",
+      "/images/catalog/cortina-bano-ramas-oro.jpg",
     ],
   },
   {
@@ -138,33 +110,33 @@ export const products: Product[] = [
       "Alfombra shaggy (pelo extra large)",
       "Alfombra 40 x 60 cm",
     ],
-    variants: [
-      { name: "Beige", color: "#C4A882", image: "/images/catalog/set-bano-beige.jpg" },
-      { name: "Azul", color: "#1B2D5A", image: "/images/catalog/set-bano-azul.jpg" },
-      { name: "Gris Claro", color: "#A8A8A8", image: "/images/catalog/set-bano-gris-claro.jpg" },
-      { name: "Gris", color: "#6B6B6B", image: "/images/catalog/set-bano-gris.jpg" },
-      { name: "Negro", color: "#1A1A1A", image: "/images/catalog/set-bano-negro.jpg" },
+    images: [
+      "/images/catalog/set-bano-beige.jpg",
+      "/images/catalog/set-bano-azul.jpg",
+      "/images/catalog/set-bano-gris-claro.jpg",
+      "/images/catalog/set-bano-gris.jpg",
+      "/images/catalog/set-bano-negro.jpg",
     ],
   },
   {
     id: "set-toalla-teka",
-    name: "Set de Toalla y Toallón Teka",
+    name: "Set de Toalla y Tollon Teka",
     category: "Toallas",
     brand: "Teka",
     line: "Ultra Suave",
     price: "$7.900",
     specs: [
       "600g",
-      "Toallón 70 x 140 cm",
+      "Tollon 70 x 140 cm",
       "Toalla 46 x 96 cm",
     ],
-    variants: [
-      { name: "Gris", color: "#8C8C8C", image: "/images/catalog/set-toalla-teka.jpg" },
-      { name: "Bordo", color: "#6B1C2A", image: "/images/catalog/set-toalla-teka-rojo.jpg" },
-      { name: "Verde", color: "#1B6B5A", image: "/images/catalog/set-toalla-teka-verde.jpg" },
-      { name: "Beige", color: "#C4A46C", image: "/images/catalog/set-toalla-teka-beige.jpg" },
-      { name: "Negro", color: "#2A2A2A", image: "/images/catalog/set-toalla-teka-negro.jpg" },
-      { name: "Lila", color: "#9B7CB8", image: "/images/catalog/set-toalla-teka-lila.jpg" },
+    images: [
+      "/images/catalog/set-toalla-teka.jpg",
+      "/images/catalog/set-toalla-teka-rojo.jpg",
+      "/images/catalog/set-toalla-teka-verde.jpg",
+      "/images/catalog/set-toalla-teka-beige.jpg",
+      "/images/catalog/set-toalla-teka-negro.jpg",
+      "/images/catalog/set-toalla-teka-lila.jpg",
     ],
   },
 ]
