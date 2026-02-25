@@ -8,6 +8,7 @@ interface ColorVariant {
   name: string
   color: string
   image: string
+  images?: string[]
 }
 
 interface ProductCardProps {
@@ -32,11 +33,14 @@ export function ProductCard({
   isVisible,
 }: ProductCardProps) {
   const [activeVariant, setActiveVariant] = useState(0)
+  const [activePhoto, setActivePhoto] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(true)
   const [showSpecs, setShowSpecs] = useState(false)
 
   const currentVariant = variants[activeVariant]
+  const currentImages = currentVariant.images ?? [currentVariant.image]
+  const currentImage = currentImages[activePhoto] ?? currentImages[0]
 
   return (
     <div
@@ -62,7 +66,7 @@ export function ProductCard({
           style={{ transform: isHovered ? "scale(1.06)" : "scale(1)" }}
         >
           <Image
-            src={currentVariant.image}
+            src={currentImage}
             alt={`${name} - ${currentVariant.name}`}
             fill
             className={`object-cover transition-opacity duration-500 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
@@ -71,14 +75,14 @@ export function ProductCard({
           />
         </div>
 
-        {/* Arrow navigation */}
-        {variants.length > 1 && (
+        {/* Arrow navigation - cycles photos within current color */}
+        {currentImages.length > 1 && (
           <>
             <button
               onClick={(e) => {
                 e.stopPropagation()
-                const prev = activeVariant === 0 ? variants.length - 1 : activeVariant - 1
-                setActiveVariant(prev)
+                const prev = activePhoto === 0 ? currentImages.length - 1 : activePhoto - 1
+                setActivePhoto(prev)
                 setImageLoaded(false)
                 setTimeout(() => setImageLoaded(true), 50)
               }}
@@ -87,15 +91,15 @@ export function ProductCard({
                 opacity: isHovered ? 1 : 0,
                 transform: isHovered ? "translate(0, -50%)" : "translate(-8px, -50%)",
               }}
-              aria-label="Color anterior"
+              aria-label="Foto anterior"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
             <button
               onClick={(e) => {
                 e.stopPropagation()
-                const next = activeVariant === variants.length - 1 ? 0 : activeVariant + 1
-                setActiveVariant(next)
+                const next = activePhoto === currentImages.length - 1 ? 0 : activePhoto + 1
+                setActivePhoto(next)
                 setImageLoaded(false)
                 setTimeout(() => setImageLoaded(true), 50)
               }}
@@ -104,7 +108,7 @@ export function ProductCard({
                 opacity: isHovered ? 1 : 0,
                 transform: isHovered ? "translate(0, -50%)" : "translate(8px, -50%)",
               }}
-              aria-label="Color siguiente"
+              aria-label="Foto siguiente"
             >
               <ChevronRight className="h-4 w-4" />
             </button>
@@ -127,25 +131,25 @@ export function ProductCard({
           {price}
         </div>
 
-        {/* Dot indicators */}
-        {variants.length > 1 && (
+        {/* Dot indicators - shows photos within current color */}
+        {currentImages.length > 1 && (
           <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10">
-            {variants.map((_, i) => (
+            {currentImages.map((_, i) => (
               <button
                 key={i}
                 onClick={(e) => {
                   e.stopPropagation()
-                  setActiveVariant(i)
+                  setActivePhoto(i)
                   setImageLoaded(false)
                   setTimeout(() => setImageLoaded(true), 50)
                 }}
                 className="h-2 rounded-full transition-all duration-300 cursor-pointer"
                 style={{
-                  width: activeVariant === i ? "16px" : "8px",
-                  backgroundColor: activeVariant === i ? "var(--primary)" : "rgba(255,255,255,0.6)",
+                  width: activePhoto === i ? "16px" : "8px",
+                  backgroundColor: activePhoto === i ? "var(--primary)" : "rgba(255,255,255,0.6)",
                   boxShadow: "0 1px 3px rgba(0,0,0,0.3)",
                 }}
-                aria-label={`Ver ${variants[i].name}`}
+                aria-label={`Foto ${i + 1}`}
               />
             ))}
           </div>
@@ -192,6 +196,7 @@ export function ProductCard({
               key={variant.name}
               onClick={() => {
                 setActiveVariant(i)
+                setActivePhoto(0)
                 setImageLoaded(false)
                 setTimeout(() => setImageLoaded(true), 50)
               }}

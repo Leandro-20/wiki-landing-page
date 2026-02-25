@@ -2,6 +2,7 @@ export interface ColorVariant {
   name: string
   color: string
   image: string
+  images?: string[]
 }
 
 export interface Product {
@@ -100,8 +101,28 @@ export const products: Product[] = [
       "Dorado o Plateado",
     ],
     variants: [
-      { name: "Plateado", color: "#C0C0C0", image: "/images/catalog/cortina-bano-confetti-plata.jpg" },
-      { name: "Dorado", color: "#D4AF37", image: "/images/catalog/cortina-bano-confetti-oro.jpg" },
+      {
+        name: "Plateado",
+        color: "#C0C0C0",
+        image: "/images/catalog/cortina-bano-confetti-plata.jpg",
+        images: [
+          "/images/catalog/cortina-bano-confetti-plata.jpg",
+          "/images/catalog/cortina-bano-hexagonos-plata.jpg",
+          "/images/catalog/cortina-bano-enrejado-plata.jpg",
+          "/images/catalog/cortina-bano-ramas-plata.jpg",
+        ],
+      },
+      {
+        name: "Dorado",
+        color: "#D4AF37",
+        image: "/images/catalog/cortina-bano-confetti-oro.jpg",
+        images: [
+          "/images/catalog/cortina-bano-confetti-oro.jpg",
+          "/images/catalog/cortina-bano-hexagonos-oro.jpg",
+          "/images/catalog/cortina-bano-enrejado-oro.jpg",
+          "/images/catalog/cortina-bano-ramas-oro.jpg",
+        ],
+      },
     ],
   },
   {
