@@ -33,6 +33,7 @@ export const products: Product[] = [
     ],
     variants: [
       { name: "Blanco", color: "#F0EDE8", image: "/images/catalog/sabanas-queen-blanco.jpg" },
+      { name: "Beige", color: "#D4C5A0", image: "/images/catalog/sabanas-queen-beige.jpg" },
       { name: "Gris Claro", color: "#B0ADA8", image: "/images/catalog/sabanas-queen-gris-claro.jpg" },
       { name: "Gris", color: "#5C5C5C", image: "/images/catalog/sabanas-queen-gris.jpg" },
     ],
