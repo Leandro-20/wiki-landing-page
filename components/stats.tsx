@@ -43,7 +43,7 @@ export function Stats() {
             Pasion por los textiles, compromiso con la calidad
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            En Wiki entendemos que un buen descanso comienza con la textura correcta. Nuestra mision es democratizar el acceso a productos de alta gama, trabajando con los mejores hilados y procesos que aseguran durabilidad incluso tras multiples lavados industriales.
+            En Casa Wiki entendemos que un buen descanso comienza con la textura correcta. Nuestra mision es democratizar el acceso a productos de alta gama, trabajando con los mejores hilados y procesos que aseguran durabilidad incluso tras multiples lavados industriales.
           </p>
           <p className="text-muted-foreground text-lg leading-relaxed">
             Desde nuestro centro de distribucion, controlamos cada detalle del packaging y la logistica para que tus productos lleguen impecables a tus estantes.

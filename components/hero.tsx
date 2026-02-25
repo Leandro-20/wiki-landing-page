@@ -45,7 +45,7 @@ export function Hero() {
             }`}
             style={{ transitionDelay: "400ms" }}
           >
-            Venta Mayorista de Blanqueria de Primera Calidad
+            Somos Tu Blanqueria Online
           </h1>
           <p
             className={`text-card/80 text-lg md:text-xl font-medium leading-relaxed transition-all duration-700 ${
@@ -53,7 +53,7 @@ export function Hero() {
             }`}
             style={{ transitionDelay: "600ms" }}
           >
-            Proveemos a hoteles, sanatorios y comercios con textiles de la mas alta suavidad y durabilidad. Precios directos para potenciar tu negocio.
+            {'Proveemos a revendedoras y negocios que buscan las tres B (bueno, bonito y barato).'}
           </p>
           <div
             className={`flex flex-wrap gap-4 mt-4 transition-all duration-700 ${

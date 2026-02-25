@@ -1,12 +1,22 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 import { ProductCard } from "@/components/product-card"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { products, categories } from "@/lib/catalog-data"
 
 export function CatalogGrid() {
-  const [activeCategory, setActiveCategory] = useState("Todos")
+  const searchParams = useSearchParams()
+  const categoriaParam = searchParams.get("categoria")
+  const initialCategory = categoriaParam && categories.includes(categoriaParam) ? categoriaParam : "Todos"
+  const [activeCategory, setActiveCategory] = useState(initialCategory)
+
+  useEffect(() => {
+    if (categoriaParam && categories.includes(categoriaParam)) {
+      setActiveCategory(categoriaParam)
+    }
+  }, [categoriaParam])
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.05 })
 
   const filtered =
@@ -53,7 +63,7 @@ export function CatalogGrid() {
               line={product.line}
               price={product.price}
               specs={product.specs}
-              variants={product.variants}
+              images={product.images}
               index={i}
               isVisible={isVisible}
             />

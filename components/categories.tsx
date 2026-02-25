@@ -10,21 +10,25 @@ const categories = [
     title: "Sabanas",
     description: "Linea Boutique 1200H",
     image: "/images/category-sheets.jpg",
+    catalogCategory: "Sabanas",
   },
   {
     title: "Cortinas Blackout",
     description: "Bloquean hasta 80% de la luz",
     image: "/images/category-towels.jpg",
+    catalogCategory: "Cortinas",
   },
   {
     title: "Cortinas de Baño",
     description: "Antihongos y antiadherente",
     image: "/images/category-pillows.jpg",
+    catalogCategory: "Baño",
   },
   {
     title: "Sets de Baño",
     description: "Cortina + alfombra shaggy",
     image: "/images/category-comforters.jpg",
+    catalogCategory: "Baño",
   },
 ]
 
@@ -41,7 +45,7 @@ export function Categories() {
         }`}
       >
         <div className="flex flex-col gap-2">
-          <h2 className="text-foreground text-3xl font-extrabold tracking-tight">Nuestras Categorias</h2>
+          <h2 className="text-foreground text-3xl font-extrabold tracking-tight">Nuestros Productos</h2>
           <p className="text-muted-foreground">Variedad y stock permanente en todos nuestros productos</p>
         </div>
         <Link href="/catalogo" className="text-primary font-bold flex items-center gap-1 hover:underline hidden sm:flex">
@@ -53,7 +57,7 @@ export function Categories() {
         {categories.map((cat, i) => (
           <Link
             key={cat.title}
-            href="/catalogo"
+            href={`/catalogo?categoria=${encodeURIComponent(cat.catalogCategory)}`}
             className={`group relative overflow-hidden rounded-2xl aspect-[4/5] bg-secondary transition-all duration-500 ${
               gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
             }`}

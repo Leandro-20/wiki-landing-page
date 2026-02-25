@@ -1,9 +1,3 @@
-export interface ColorVariant {
-  name: string
-  color: string
-  image: string
-}
-
 export interface Product {
   id: string
   name: string
@@ -12,7 +6,7 @@ export interface Product {
   line: string
   price: string
   specs: string[]
-  variants: ColorVariant[]
+  images: string[]
 }
 
 export const products: Product[] = [
@@ -31,10 +25,11 @@ export const products: Product[] = [
       "1200H",
       "Suaves y frescas",
     ],
-    variants: [
-      { name: "Blanco", color: "#F5F5F0", image: "/images/catalog/sabanas-queen-blanco.jpg" },
-      { name: "Gris", color: "#8C8C8C", image: "/images/catalog/sabanas-queen-gris.jpg" },
-      { name: "Rosa", color: "#D4A0A0", image: "/images/catalog/sabanas-queen-rosa.jpg" },
+    images: [
+      "/images/catalog/sabanas-queen-gris.jpg",
+      "/images/catalog/sabanas-queen-gris-claro.jpg",
+      "/images/catalog/sabanas-queen-blanco.jpg",
+      "/images/catalog/sabanas-queen-beige.jpg",
     ],
   },
   {
@@ -52,10 +47,10 @@ export const products: Product[] = [
       "1200H",
       "Suaves y frescas",
     ],
-    variants: [
-      { name: "Blanco", color: "#F5F5F0", image: "/images/catalog/sabanas-king-blanco.jpg" },
-      { name: "Gris", color: "#8C8C8C", image: "/images/catalog/sabanas-king-gris.jpg" },
-      { name: "Rosa", color: "#D4A0A0", image: "/images/catalog/sabanas-king-rosa.jpg" },
+    images: [
+      "/images/catalog/sabanas-king-gris-oscuro.jpg",
+      "/images/catalog/sabanas-king-gris-claro.jpg",
+      "/images/catalog/sabanas-king-beige.jpg",
     ],
   },
   {
@@ -63,7 +58,7 @@ export const products: Product[] = [
     name: "Cortinas Blackout",
     category: "Cortinas",
     brand: "Campomayo",
-    line: "",
+    line: "Linea Textil",
     price: "$19.599",
     specs: [
       "2 paños de 140 x 220 cm c/u",
@@ -71,10 +66,9 @@ export const products: Product[] = [
       "Conservan la temperatura ambiente",
       "Presillas y barral ocultos y reforzados",
     ],
-    variants: [
-      { name: "Gris", color: "#8C8C8C", image: "/images/catalog/blackout-gris.jpg" },
-      { name: "Negro", color: "#2A2A2A", image: "/images/catalog/blackout-negro.jpg" },
-      { name: "Crema", color: "#D4C5A9", image: "/images/catalog/blackout-crema.jpg" },
+    images: [
+      "/images/catalog/blackout-gris-oscuro.jpg",
+      "/images/catalog/blackout-gris-medio.jpg",
     ],
   },
   {
@@ -82,20 +76,25 @@ export const products: Product[] = [
     name: "Cortina de Baño",
     category: "Baño",
     brand: "Campomayo",
-    line: "",
+    line: "Cortina Programada",
     price: "$9.900",
     specs: [
       "Programada (lista para usar)",
       "No necesita protector",
-      "Antihongos",
-      "Antiadherente",
+      "Antihongos / Antiadherente",
       "Ganchos argolla reforzados",
       "180 x 180 cm",
+      "Dorado o Plateado",
     ],
-    variants: [
-      { name: "Blanco", color: "#F5F5F0", image: "/images/catalog/cortina-bano-blanco.jpg" },
-      { name: "Gris", color: "#8C8C8C", image: "/images/catalog/cortina-bano-gris.jpg" },
-      { name: "Azul", color: "#1B3A5C", image: "/images/catalog/cortina-bano-azul.jpg" },
+    images: [
+      "/images/catalog/cortina-bano-confetti-plata.jpg",
+      "/images/catalog/cortina-bano-hexagonos-plata.jpg",
+      "/images/catalog/cortina-bano-enrejado-plata.jpg",
+      "/images/catalog/cortina-bano-ramas-plata.jpg",
+      "/images/catalog/cortina-bano-confetti-oro.jpg",
+      "/images/catalog/cortina-bano-hexagonos-oro.jpg",
+      "/images/catalog/cortina-bano-enrejado-oro.jpg",
+      "/images/catalog/cortina-bano-ramas-oro.jpg",
     ],
   },
   {
@@ -103,7 +102,7 @@ export const products: Product[] = [
     name: "Set de Baño",
     category: "Baño",
     brand: "Campomayo",
-    line: "",
+    line: "Linea Lessia",
     price: "$9.999",
     specs: [
       "Cortina de baño 178 x 173 cm",
@@ -111,12 +110,35 @@ export const products: Product[] = [
       "Alfombra shaggy (pelo extra large)",
       "Alfombra 40 x 60 cm",
     ],
-    variants: [
-      { name: "Blanco", color: "#F5F5F0", image: "/images/catalog/set-bano-blanco.jpg" },
-      { name: "Gris", color: "#8C8C8C", image: "/images/catalog/set-bano-gris.jpg" },
-      { name: "Rosa", color: "#D4A0A0", image: "/images/catalog/set-bano-rosa.jpg" },
+    images: [
+      "/images/catalog/set-bano-gris-oscuro.jpg",
+      "/images/catalog/set-bano-negro.jpg",
+      "/images/catalog/set-bano-beige.jpg",
+      "/images/catalog/set-bano-gris-claro.jpg",
+      "/images/catalog/set-bano-azul.jpg",
+    ],
+  },
+  {
+    id: "set-toalla-teka",
+    name: "Set de Toalla y Tollon Teka",
+    category: "Toallas",
+    brand: "Teka",
+    line: "Ultra Suave",
+    price: "$7.900",
+    specs: [
+      "600g",
+      "Tollon 70 x 140 cm",
+      "Toalla 46 x 96 cm",
+    ],
+    images: [
+      "/images/catalog/set-toalla-teka.jpg",
+      "/images/catalog/set-toalla-teka-rojo.jpg",
+      "/images/catalog/set-toalla-teka-verde.jpg",
+      "/images/catalog/set-toalla-teka-beige.jpg",
+      "/images/catalog/set-toalla-teka-negro.jpg",
+      "/images/catalog/set-toalla-teka-lila.jpg",
     ],
   },
 ]
 
-export const categories = ["Todos", "Sabanas", "Cortinas", "Baño"]
+export const categories = ["Todos", "Sabanas", "Cortinas", "Baño", "Toallas"]

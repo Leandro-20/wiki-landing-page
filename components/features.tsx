@@ -34,7 +34,7 @@ export function Features() {
         }`}
       >
         <h2 className="text-foreground text-4xl font-extrabold tracking-tight mb-4">
-          {"¿Por qué elegir Wiki?"}
+          {"¿Por qué elegir Casa Wiki?"}
         </h2>
         <p className="text-muted-foreground text-lg">
           Llevamos 2 años siendo el socio estratégico de comercios textiles en todo el país.

@@ -9,8 +9,17 @@ const _manrope = Manrope({
 })
 
 export const metadata: Metadata = {
-  title: 'Wiki - Venta Mayorista de Blanqueria',
+  title: 'Casa Wiki - Venta Mayorista de Blanqueria',
   description: 'Venta mayorista de blanqueria. Sabanas, cortinas, acolchados y mas de la mejor calidad a precios mayoristas. Buenos Aires, Argentina.',
+  icons: {
+    icon: '/icon.svg',
+    apple: '/images/logo-casa-wiki.png',
+  },
+  openGraph: {
+    title: 'Casa Wiki - Venta Mayorista de Blanqueria',
+    description: 'Sabanas, cortinas, acolchados y mas de la mejor calidad a precios mayoristas.',
+    images: ['/images/logo-casa-wiki.png'],
+  },
 }
 
 export const viewport: Viewport = {

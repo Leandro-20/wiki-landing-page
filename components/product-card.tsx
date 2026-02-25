@@ -2,12 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
-
-interface ColorVariant {
-  name: string
-  color: string
-  image: string
-}
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 interface ProductCardProps {
   name: string
@@ -15,7 +10,7 @@ interface ProductCardProps {
   line: string
   price: string
   specs: string[]
-  variants: ColorVariant[]
+  images: string[]
   index: number
   isVisible: boolean
 }
@@ -26,16 +21,32 @@ export function ProductCard({
   line,
   price,
   specs,
-  variants,
+  images,
   index,
   isVisible,
 }: ProductCardProps) {
-  const [activeVariant, setActiveVariant] = useState(0)
+  const [activePhoto, setActivePhoto] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(true)
   const [showSpecs, setShowSpecs] = useState(false)
 
-  const currentVariant = variants[activeVariant]
+  const currentImage = images[activePhoto]
+
+  const goToPrev = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    const prev = activePhoto === 0 ? images.length - 1 : activePhoto - 1
+    setActivePhoto(prev)
+    setImageLoaded(false)
+    setTimeout(() => setImageLoaded(true), 50)
+  }
+
+  const goToNext = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    const next = activePhoto === images.length - 1 ? 0 : activePhoto + 1
+    setActivePhoto(next)
+    setImageLoaded(false)
+    setTimeout(() => setImageLoaded(true), 50)
+  }
 
   return (
     <div
@@ -61,8 +72,8 @@ export function ProductCard({
           style={{ transform: isHovered ? "scale(1.06)" : "scale(1)" }}
         >
           <Image
-            src={currentVariant.image}
-            alt={`${name} - ${currentVariant.name}`}
+            src={currentImage}
+            alt={`${name} - foto ${activePhoto + 1}`}
             fill
             className={`object-cover transition-opacity duration-500 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -70,21 +81,75 @@ export function ProductCard({
           />
         </div>
 
-        {/* Color name badge top left */}
-        <div
-          className="absolute top-3 left-3 rounded-full bg-card/90 backdrop-blur-sm px-3 py-1 text-xs font-semibold text-card-foreground transition-all duration-300"
-          style={{
-            opacity: isHovered ? 1 : 0,
-            transform: isHovered ? "translateY(0)" : "translateY(-8px)",
-          }}
-        >
-          {currentVariant.name}
-        </div>
+        {/* Arrow navigation */}
+        {images.length > 1 && (
+          <>
+            <button
+              onClick={goToPrev}
+              className="absolute left-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center text-card-foreground shadow-md transition-all duration-300 hover:bg-card hover:scale-110 cursor-pointer"
+              style={{
+                opacity: isHovered ? 1 : 0,
+                transform: isHovered ? "translate(0, -50%)" : "translate(-8px, -50%)",
+              }}
+              aria-label="Foto anterior"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <button
+              onClick={goToNext}
+              className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center text-card-foreground shadow-md transition-all duration-300 hover:bg-card hover:scale-110 cursor-pointer"
+              style={{
+                opacity: isHovered ? 1 : 0,
+                transform: isHovered ? "translate(0, -50%)" : "translate(8px, -50%)",
+              }}
+              aria-label="Foto siguiente"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </>
+        )}
+
+        {/* Photo counter badge top left */}
+        {images.length > 1 && (
+          <div
+            className="absolute top-3 left-3 rounded-full bg-card/90 backdrop-blur-sm px-3 py-1 text-xs font-semibold text-card-foreground transition-all duration-300"
+            style={{
+              opacity: isHovered ? 1 : 0,
+              transform: isHovered ? "translateY(0)" : "translateY(-8px)",
+            }}
+          >
+            {activePhoto + 1} / {images.length}
+          </div>
+        )}
 
         {/* Price badge top right */}
         <div className="absolute top-3 right-3 rounded-full bg-primary text-primary-foreground px-3 py-1.5 text-sm font-bold shadow-lg shadow-primary/20">
           {price}
         </div>
+
+        {/* Dot indicators */}
+        {images.length > 1 && (
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setActivePhoto(i)
+                  setImageLoaded(false)
+                  setTimeout(() => setImageLoaded(true), 50)
+                }}
+                className="h-2 rounded-full transition-all duration-300 cursor-pointer"
+                style={{
+                  width: activePhoto === i ? "16px" : "8px",
+                  backgroundColor: activePhoto === i ? "var(--primary)" : "rgba(255,255,255,0.6)",
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.3)",
+                }}
+                aria-label={`Foto ${i + 1}`}
+              />
+            ))}
+          </div>
+        )}
 
         {/* Specs overlay on hover/click */}
         <div
@@ -119,36 +184,9 @@ export function ProductCard({
           {line ? ` - ${line}` : ""}
         </p>
 
-        {/* Color swatches */}
-        <div className="mt-3 flex items-center gap-2">
-          <span className="text-xs text-muted-foreground mr-1">Color:</span>
-          {variants.map((variant, i) => (
-            <button
-              key={variant.name}
-              onClick={() => {
-                setActiveVariant(i)
-                setImageLoaded(false)
-                setTimeout(() => setImageLoaded(true), 50)
-              }}
-              className="relative h-7 w-7 rounded-full transition-all duration-300 hover:scale-110 cursor-pointer"
-              style={{
-                backgroundColor: variant.color,
-                boxShadow:
-                  activeVariant === i
-                    ? "0 0 0 2px var(--card), 0 0 0 4px var(--primary)"
-                    : "0 0 0 1px rgba(0,0,0,0.12)",
-                transform: activeVariant === i ? "scale(1.1)" : "scale(1)",
-              }}
-              aria-label={`Color ${variant.name}`}
-            >
-              <span className="sr-only">{variant.name}</span>
-            </button>
-          ))}
-        </div>
-
         {/* WhatsApp CTA */}
         <a
-          href={`https://wa.me/5491124097141?text=Hola! Me interesa el producto: ${name} en color ${currentVariant.name}`}
+          href={`https://wa.me/5491124097141?text=Hola! Me interesa el producto: ${name}`}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-3 flex items-center justify-center rounded-xl h-10 bg-primary text-primary-foreground text-sm font-bold hover:bg-primary/90 transition-all hover:scale-[1.02] active:scale-[0.98]"
