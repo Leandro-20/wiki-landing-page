@@ -117,6 +117,22 @@ export const products: Product[] = [
       { name: "Rosa", color: "#D4A0A0", image: "/images/catalog/set-bano-rosa.jpg" },
     ],
   },
+  {
+    id: "set-toalla-teka",
+    name: "Set de Toalla y Toallón Teka",
+    category: "Toallas",
+    brand: "Teka",
+    line: "Ultra Suave",
+    price: "$7.900",
+    specs: [
+      "600 gms",
+      "Toallón 70 x 140 cm",
+      "Toalla 46 x 96 cm",
+    ],
+    variants: [
+      { name: "Gris", color: "#8C8C8C", image: "/images/catalog/set-toalla-teka.jpg" },
+    ],
+  },
 ]
 
-export const categories = ["Todos", "Sabanas", "Cortinas", "Baño"]
+export const categories = ["Todos", "Sabanas", "Cortinas", "Baño", "Toallas"]
