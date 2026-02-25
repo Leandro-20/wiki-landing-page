@@ -1,27 +1,25 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { Menu, X, Search } from "lucide-react"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Sabanas", href: "/#categorias" },
-  { label: "Cortinas", href: "/#categorias" },
-  { label: "Baño", href: "/#categorias" },
+  { label: "Clientes", href: "#clientes" },
   { label: "Beneficios", href: "/#beneficios" },
-  { label: "Mayoristas", href: "/#registro" },
-]
+  { label: "Quiénes somos", href: "/#quienes-somos" },
+];
 
 export function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header
@@ -37,10 +35,10 @@ export function Navbar() {
           <Link href="/" className="flex items-center">
             <Image
               src="/images/logo-casa-wiki.png"
-              alt="Casa Wiki - Tu Blanqueria Online"
-              width={180}
-              height={72}
-              className="h-12 md:h-14 w-auto object-contain"
+              alt="Casa Wiki - Tu Blanquería Online"
+              width={450}
+              height={180}
+              className="h-20 md:h-24 w-auto object-contain"
               priority
             />
           </Link>
@@ -61,20 +59,17 @@ export function Navbar() {
 
         {/* Desktop right side */}
         <div className="hidden lg:flex items-center gap-4">
-          <div className="flex h-10 items-stretch rounded-xl border border-border overflow-hidden">
-            <div className="flex items-center justify-center px-3 bg-secondary text-muted-foreground">
-              <Search className="h-4 w-4" />
-            </div>
-            <input
-              className="w-40 bg-secondary text-sm text-foreground placeholder:text-muted-foreground border-none focus:outline-none focus:ring-0 px-3"
-              placeholder="Buscar productos..."
-            />
-          </div>
           <Link
             href="/catalogo"
             className="flex items-center justify-center rounded-xl h-10 px-5 bg-primary text-primary-foreground text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all"
           >
-            Ver Catalogo
+            Ver Catálogo
+          </Link>
+          <Link
+            href="#registro"
+            className="flex items-center justify-center rounded-xl h-10 px-5 bg-card text-foreground text-sm font-bold border border-border hover:bg-secondary transition-all"
+          >
+            Contactar asesor
           </Link>
         </div>
 
@@ -84,7 +79,11 @@ export function Navbar() {
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
         >
-          {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {mobileOpen ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <Menu className="h-6 w-6" />
+          )}
         </button>
       </nav>
 
@@ -121,10 +120,10 @@ export function Navbar() {
             className="mt-4 flex items-center justify-center rounded-xl h-10 px-5 bg-primary text-primary-foreground text-sm font-bold w-full"
             onClick={() => setMobileOpen(false)}
           >
-            Ver Catalogo
+            Ver Catálogo
           </Link>
         </div>
       </div>
     </header>
-  )
+  );
 }

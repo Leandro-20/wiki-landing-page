@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import Image from "next/image"
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export function CatalogHero() {
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    setLoaded(true)
-  }, [])
+    setLoaded(true);
+  }, []);
 
   return (
     <section className="px-6 lg:px-20 py-8">
@@ -16,7 +16,7 @@ export function CatalogHero() {
         <div className="absolute inset-0">
           <Image
             src="/images/hero-bedding.jpg"
-            alt="Blanqueria Casa Wiki"
+            alt="Blanquería Casa Wiki"
             fill
             className={`object-cover transition-transform duration-[1.5s] ease-out ${
               loaded ? "scale-100" : "scale-110"
@@ -46,10 +46,12 @@ export function CatalogHero() {
               loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
-            {'Explora nuestros articulos y elegí productos ganadores para tu negocio.'}
+            {
+              "Explora nuestros articulos y elegí productos ganadores para tu negocio."
+            }
           </p>
         </div>
       </div>
     </section>
-  )
+  );
 }

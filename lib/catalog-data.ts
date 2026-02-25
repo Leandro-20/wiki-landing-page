@@ -1,12 +1,12 @@
 export interface Product {
-  id: string
-  name: string
-  category: string
-  brand: string
-  line: string
-  price: string
-  specs: string[]
-  images: string[]
+  id: string;
+  name: string;
+  category: string;
+  brand: string;
+  line: string;
+  price: string;
+  specs: string[];
+  images: string[];
 }
 
 export const products: Product[] = [
@@ -50,7 +50,7 @@ export const products: Product[] = [
     images: [
       "/images/catalog/sabanas-king-gris-oscuro.jpg",
       "/images/catalog/sabanas-king-gris-claro.jpg",
-      "/images/catalog/sabanas-king-beige.jpg",
+      "/images/catalog/boutique-beige-bl.png",
     ],
   },
   {
@@ -125,11 +125,7 @@ export const products: Product[] = [
     brand: "Teka",
     line: "Ultra Suave",
     price: "$7.900",
-    specs: [
-      "600g",
-      "Tollon 70 x 140 cm",
-      "Toalla 46 x 96 cm",
-    ],
+    specs: ["600g", "Tollon 70 x 140 cm", "Toalla 46 x 96 cm"],
     images: [
       "/images/catalog/set-toalla-teka.jpg",
       "/images/catalog/set-toalla-teka-rojo.jpg",
@@ -139,6 +135,6 @@ export const products: Product[] = [
       "/images/catalog/set-toalla-teka-lila.jpg",
     ],
   },
-]
+];
 
-export const categories = ["Todos", "Sabanas", "Cortinas", "Baño", "Toallas"]
+export const categories = ["Todos", "Sabanas", "Cortinas", "Baño", "Toallas"];

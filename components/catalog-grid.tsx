@@ -1,28 +1,40 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useSearchParams } from "next/navigation"
-import { ProductCard } from "@/components/product-card"
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import { products, categories } from "@/lib/catalog-data"
+import { useState, useMemo } from "react";
+import { ProductCard } from "@/components/product-card";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { products, categories } from "@/lib/catalog-data";
 
-export function CatalogGrid() {
-  const searchParams = useSearchParams()
-  const categoriaParam = searchParams.get("categoria")
-  const initialCategory = categoriaParam && categories.includes(categoriaParam) ? categoriaParam : "Todos"
-  const [activeCategory, setActiveCategory] = useState(initialCategory)
+interface CatalogGridProps {
+  initialCategory?: string;
+}
 
-  useEffect(() => {
-    if (categoriaParam && categories.includes(categoriaParam)) {
-      setActiveCategory(categoriaParam)
+export function CatalogGrid({ initialCategory }: CatalogGridProps) {
+  // Memoize the valid categories to avoid recalculation
+  const validCategories = useMemo(() => categories, []);
+
+  // Decode the category from URL if encoded
+  const decodedCategory = initialCategory
+    ? decodeURIComponent(initialCategory)
+    : undefined;
+
+  // Determine initial category - only set if URL param is valid
+  const getInitialCategory = () => {
+    if (decodedCategory && validCategories.includes(decodedCategory)) {
+      return decodedCategory;
     }
-  }, [categoriaParam])
-  const { ref, isVisible } = useScrollAnimation({ threshold: 0.05 })
+    return "Todos";
+  };
+
+  const [activeCategory, setActiveCategory] = useState<string>(() =>
+    getInitialCategory(),
+  );
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.05 });
 
   const filtered =
     activeCategory === "Todos"
       ? products
-      : products.filter((p) => p.category === activeCategory)
+      : products.filter((p) => p.category === activeCategory);
 
   return (
     <section ref={ref} className="py-12 px-6 lg:px-20">
@@ -78,5 +90,5 @@ export function CatalogGrid() {
         )}
       </div>
     </section>
-  )
+  );
 }

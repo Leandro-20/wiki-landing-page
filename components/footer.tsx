@@ -1,6 +1,6 @@
-import Link from "next/link"
-import Image from "next/image"
-import { MapPin, Phone, Instagram } from "lucide-react"
+import Link from "next/link";
+import Image from "next/image";
+import { MapPin, Phone, Instagram } from "lucide-react";
 
 export function Footer() {
   return (
@@ -11,14 +11,15 @@ export function Footer() {
           <Link href="/" className="flex items-center">
             <Image
               src="/images/logo-casa-wiki.png"
-              alt="Casa Wiki - Tu Blanqueria Online"
+              alt="Casa Wiki - Tu Blanquería Online"
               width={160}
               height={64}
               className="h-14 w-auto object-contain"
             />
           </Link>
           <p className="text-muted-foreground text-sm">
-            Expertos en textiles para el hogar y hoteleria. Calidad premium con precios mayoristas.
+            Expertos en textiles para el hogar y hoteleria. Calidad premium con
+            precios mayoristas.
           </p>
           <div className="flex gap-3">
             <a
@@ -33,14 +34,42 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Categorias */}
+        {/* Categorías */}
         <div>
-          <h4 className="text-foreground font-bold mb-6">Categorias</h4>
+          <h4 className="text-foreground font-bold mb-6">Categorías</h4>
           <ul className="space-y-4 text-sm text-muted-foreground">
-            <li><Link href="/catalogo" className="hover:text-primary transition-colors">Sabanas Campomayo</Link></li>
-            <li><Link href="/catalogo" className="hover:text-primary transition-colors">Cortinas Blackout</Link></li>
-            <li><Link href="/catalogo" className="hover:text-primary transition-colors">Cortinas de Baño</Link></li>
-            <li><Link href="/catalogo" className="hover:text-primary transition-colors">Sets de Baño</Link></li>
+            <li>
+              <Link
+                href="/catalogo?categoria=Sabanas"
+                className="hover:text-primary transition-colors"
+              >
+                Sábanas
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/catalogo?categoria=Cortinas"
+                className="hover:text-primary transition-colors"
+              >
+                Cortinas
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/catalogo?categoria=Baño"
+                className="hover:text-primary transition-colors"
+              >
+                Sets de Baño
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/catalogo?categoria=Toallas"
+                className="hover:text-primary transition-colors"
+              >
+                Toallas y Toallones
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -48,9 +77,22 @@ export function Footer() {
         <div>
           <h4 className="text-foreground font-bold mb-6">Empresa</h4>
           <ul className="space-y-4 text-sm text-muted-foreground">
-            <li><Link href="/#beneficios" className="hover:text-primary transition-colors">Sobre Nosotros</Link></li>
-            <li><Link href="/#registro" className="hover:text-primary transition-colors">Como Comprar</Link></li>
-            <li><Link href="/catalogo" className="hover:text-primary transition-colors">Catalogo</Link></li>
+            <li>
+              <Link
+                href="/#quienes-somos"
+                className="hover:text-primary transition-colors"
+              >
+                Sobre Nosotros
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/catalogo"
+                className="hover:text-primary transition-colors"
+              >
+                Catálogo
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -64,23 +106,41 @@ export function Footer() {
             </li>
             <li className="flex items-center gap-3">
               <Phone className="h-5 w-5 text-primary shrink-0" />
-              <a href="https://wa.me/5491124097141" className="hover:text-primary transition-colors">11 2409-7141</a>
+              <a
+                href="https://wa.me/5491124097141"
+                className="hover:text-primary transition-colors"
+              >
+                11 2409-7141
+              </a>
             </li>
             <li className="flex items-center gap-3">
               <Instagram className="h-5 w-5 text-primary shrink-0" />
-              <a href="https://instagram.com/casawiki" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">@casawiki</a>
+              <a
+                href="https://instagram.com/casawiki"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors"
+              >
+                @casawiki
+              </a>
             </li>
           </ul>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
-        <p>{"Casa Wiki Blanqueria Mayorista. Todos los derechos reservados."}</p>
+        <p>
+          {"Casa Wiki Blanquería Mayorista. Todos los derechos reservados."}
+        </p>
         <div className="flex gap-6">
-          <a href="#" className="hover:text-foreground transition-colors">Defensa del Consumidor</a>
-          <a href="#" className="hover:text-foreground transition-colors">Privacidad</a>
+          <a href="#" className="hover:text-foreground transition-colors">
+            Defensa del Consumidor
+          </a>
+          <a href="#" className="hover:text-foreground transition-colors">
+            Privacidad
+          </a>
         </div>
       </div>
     </footer>
-  )
+  );
 }

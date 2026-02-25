@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import Link from "next/link"
-import { useEffect, useState } from "react"
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export function Hero() {
-  const [mounted, setMounted] = useState(false)
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setMounted(true), 100)
-    return () => clearTimeout(timeout)
-  }, [])
+    const timeout = setTimeout(() => setMounted(true), 100);
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <section className="px-6 lg:px-20 py-8">
@@ -45,7 +45,7 @@ export function Hero() {
             }`}
             style={{ transitionDelay: "400ms" }}
           >
-            Somos Tu Blanqueria Online
+            Somos Tu Blanquería Online
           </h1>
           <p
             className={`text-card/80 text-lg md:text-xl font-medium leading-relaxed transition-all duration-700 ${
@@ -53,7 +53,9 @@ export function Hero() {
             }`}
             style={{ transitionDelay: "600ms" }}
           >
-            {'Proveemos a revendedoras y negocios que buscan las tres B (bueno, bonito y barato).'}
+            {
+              "Proveemos a revendedores y negocios que buscan las tres B (bueno, bonito y barato)."
+            }
           </p>
           <div
             className={`flex flex-wrap gap-4 mt-4 transition-all duration-700 ${
@@ -65,7 +67,7 @@ export function Hero() {
               href="/catalogo"
               className="flex min-w-[180px] items-center justify-center rounded-xl h-14 px-8 bg-primary text-primary-foreground text-base font-bold shadow-xl shadow-primary/30 hover:scale-105 transition-transform"
             >
-              Ver Catalogo Mayorista
+              Ver Catálogo Mayorista
             </Link>
             <a
               href="https://wa.me/5491124097141"
@@ -79,5 +81,5 @@ export function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }
