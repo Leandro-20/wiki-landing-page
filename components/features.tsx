@@ -37,7 +37,7 @@ export function Features() {
           {"Por que elegir Wiki?"}
         </h2>
         <p className="text-muted-foreground text-lg">
-          Llevamos mas de 15 anos siendo el socio estrategico de comercios textiles en todo el pais.
+          Llevamos 2 anos siendo el socio estrategico de comercios textiles en todo el pais.
         </p>
       </div>
 
