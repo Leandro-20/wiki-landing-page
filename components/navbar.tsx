@@ -38,9 +38,9 @@ export function Navbar() {
             <Image
               src="/images/logo-casa-wiki.png"
               alt="Casa Wiki - Tu Blanqueria Online"
-              width={140}
-              height={56}
-              className="h-10 w-auto object-contain"
+              width={180}
+              height={72}
+              className="h-12 md:h-14 w-auto object-contain"
               priority
             />
           </Link>

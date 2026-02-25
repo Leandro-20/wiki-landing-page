@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: 'Casa Wiki - Venta Mayorista de Blanqueria',
   description: 'Venta mayorista de blanqueria. Sabanas, cortinas, acolchados y mas de la mejor calidad a precios mayoristas. Buenos Aires, Argentina.',
   icons: {
-    icon: '/images/logo-casa-wiki.png',
+    icon: '/icon.svg',
     apple: '/images/logo-casa-wiki.png',
   },
   openGraph: {
