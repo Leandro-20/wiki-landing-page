@@ -133,6 +133,9 @@ export const products: Product[] = [
       { name: "Gris", color: "#8C8C8C", image: "/images/catalog/set-toalla-teka.jpg" },
       { name: "Bordo", color: "#6B1C2A", image: "/images/catalog/set-toalla-teka-rojo.jpg" },
       { name: "Verde", color: "#1B6B5A", image: "/images/catalog/set-toalla-teka-verde.jpg" },
+      { name: "Beige", color: "#C4A46C", image: "/images/catalog/set-toalla-teka-beige.jpg" },
+      { name: "Negro", color: "#2A2A2A", image: "/images/catalog/set-toalla-teka-negro.jpg" },
+      { name: "Lila", color: "#9B7CB8", image: "/images/catalog/set-toalla-teka-lila.jpg" },
     ],
   },
 ]
