@@ -62,11 +62,12 @@ export function Stats() {
           }`}
         >
           <div className="bg-primary/20 absolute -inset-4 rounded-3xl rotate-3" />
-          <div className="relative rounded-3xl shadow-2xl overflow-hidden aspect-[4/3]">
+          <div className="relative rounded-3xl shadow-2xl overflow-hidden w-full min-h-[320px] lg:min-h-[400px]">
             <Image
               src="/images/about-quality.jpg"
               alt="Control de calidad y empaquetado de blanqueria"
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />
           </div>
