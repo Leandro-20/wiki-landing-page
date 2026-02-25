@@ -13,7 +13,7 @@ export function Footer() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
               </svg>
             </div>
-            <span className="text-xl font-extrabold text-foreground">Wiki</span>
+            <span className="text-xl font-extrabold text-foreground">Casa Wiki</span>
           </Link>
           <p className="text-muted-foreground text-sm">
             Expertos en textiles para el hogar y hoteleria. Calidad premium con precios mayoristas.
@@ -73,7 +73,7 @@ export function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
-        <p>{"Wiki Blanqueria Mayorista. Todos los derechos reservados."}</p>
+        <p>{"Casa Wiki Blanqueria Mayorista. Todos los derechos reservados."}</p>
         <div className="flex gap-6">
           <a href="#" className="hover:text-foreground transition-colors">Defensa del Consumidor</a>
           <a href="#" className="hover:text-foreground transition-colors">Privacidad</a>

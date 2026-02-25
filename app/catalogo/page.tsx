@@ -5,7 +5,7 @@ import { CatalogGrid } from "@/components/catalog-grid"
 import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
-  title: "Catalogo - Wiki Blanqueria por Mayor",
+  title: "Catalogo - Casa Wiki Blanqueria por Mayor",
   description:
     "Catalogo completo Campomayo: sabanas queen y king 1200H, cortinas blackout, cortinas de baño y sets de baño. Precios mayoristas.",
 }

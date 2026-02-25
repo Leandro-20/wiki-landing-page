@@ -16,7 +16,7 @@ export function CatalogHero() {
         <div className="absolute inset-0">
           <Image
             src="/images/hero-bedding.jpg"
-            alt="Blanqueria Wiki"
+            alt="Blanqueria Casa Wiki"
             fill
             className={`object-cover transition-transform duration-[1.5s] ease-out ${
               loaded ? "scale-100" : "scale-110"
