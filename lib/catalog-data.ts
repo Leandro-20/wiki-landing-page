@@ -26,10 +26,10 @@ export const products: Product[] = [
       "Suaves y frescas",
     ],
     images: [
+      "/images/catalog/sabanas-queen-gris.jpg",
+      "/images/catalog/sabanas-queen-gris-claro.jpg",
       "/images/catalog/sabanas-queen-blanco.jpg",
       "/images/catalog/sabanas-queen-beige.jpg",
-      "/images/catalog/sabanas-queen-gris-claro.jpg",
-      "/images/catalog/sabanas-queen-gris.jpg",
     ],
   },
   {
