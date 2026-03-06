@@ -171,6 +171,39 @@ export const products: Product[] = [
     ],
   },
   {
+    id: "set-toallas-deco",
+    name: "Set de Toallas x 4 Deco Home",
+    category: "Toallas",
+    brand: "Deco Home",
+    line: "100% Algodon Egipcio",
+    price: "$24.000",
+    specs: ["Trenzado artesanal", "4 toallas de 50 x 80 cm", "Colores neutros"],
+    images: [
+      "/images/catalog/tll 1.png",
+      "/images/catalog/tll 2.png",
+      "/images/catalog/tll 3.png",
+    ],
+  },
+  {
+    id: "set-toalla-xl",
+    name: "Set de Toalla y Toallon XL - Home Deco",
+    category: "Toallas",
+    brand: "Home Deco",
+    line: "100% Algodon Egipcio",
+    price: "$24.000",
+    specs: [
+      "420g",
+      "Toallon gigante 90 x 150 cm",
+      "Toalla grande 50 x 90 cm",
+      "Colores naturales",
+    ],
+    images: [
+      "/images/catalog/xl 3.png",
+      "/images/catalog/xl 1.png",
+      "/images/catalog/xl 2.png",
+    ],
+  },
+  {
     id: "manta-teddy",
     name: "Manta Teddy 2 1/2",
     category: "Mantas",
@@ -185,6 +218,16 @@ export const products: Product[] = [
     ],
     images: ["/images/catalog/teddy 1.jpeg", "/images/catalog/teddy 2.jpeg"],
   },
+  {
+    id: "set-repasadores",
+    name: "Set de Repasadores x 3",
+    category: "Cocina",
+    brand: "Linea Cocina",
+    line: "Textil Hogar",
+    price: "$3.200",
+    specs: ["2 estampados", "1 liso", "40 x 60 cm"],
+    images: ["/images/catalog/repa.jpeg"],
+  },
 ];
 
 export const categories = [
@@ -194,4 +237,5 @@ export const categories = [
   "Baño",
   "Toallas",
   "Mantas",
+  "Cocina",
 ];
