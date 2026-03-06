@@ -72,6 +72,41 @@ export const products: Product[] = [
     ],
   },
   {
+    id: "cortinas-lino",
+    name: "Cortinas de Ambiente Lino",
+    category: "Cortinas",
+    brand: "Home Deco",
+    line: "Linea Lino",
+    price: "$17.000",
+    specs: [
+      "2 paños de 140 x 220 cm c/u",
+      "Presillas ocultas",
+      "Colores neutros",
+      "Tela lino",
+    ],
+    images: [
+      "/images/catalog/lino 1.png",
+      "/images/catalog/lino 2.png",
+      "/images/catalog/lino 3.png",
+      "/images/catalog/lino 4.jpeg",
+    ],
+  },
+  {
+    id: "cortinas-cocina",
+    name: "Cortinas de Cocina Estampadas",
+    category: "Cortinas",
+    brand: "Tropical Pesado",
+    line: "Linea Cocina",
+    price: "$7.500",
+    specs: ["125 cm de largo", "Varios motivos"],
+    images: [
+      "/images/catalog/cort co 1.png",
+      "/images/catalog/cort co 2.png",
+      "/images/catalog/cort co 3.png",
+      "/images/catalog/cort co 4.png",
+    ],
+  },
+  {
     id: "cortina-bano",
     name: "Cortina de Baño",
     category: "Baño",
@@ -135,6 +170,28 @@ export const products: Product[] = [
       "/images/catalog/set-toalla-teka-lila.jpg",
     ],
   },
+  {
+    id: "manta-teddy",
+    name: "Manta Teddy 2 1/2",
+    category: "Mantas",
+    brand: "Soft Polar",
+    line: "Ultra Suave",
+    price: "$9.000",
+    specs: [
+      "140 x 200 cm",
+      "Ultra suaves",
+      "Para cama, viajes y otros usos",
+      "Colores naturales",
+    ],
+    images: ["/images/catalog/teddy 1.jpeg", "/images/catalog/teddy 2.jpeg"],
+  },
 ];
 
-export const categories = ["Todos", "Sabanas", "Cortinas", "Baño", "Toallas"];
+export const categories = [
+  "Todos",
+  "Sabanas",
+  "Cortinas",
+  "Baño",
+  "Toallas",
+  "Mantas",
+];
