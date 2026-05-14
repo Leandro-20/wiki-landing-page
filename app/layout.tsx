@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { FloatingWhatsApp } from "@/components/floating-whatsapp";
+import { ChatWidget } from "@/components/chat-widget";
 import "./globals.css";
 
 const _manrope = Manrope({
@@ -39,6 +40,7 @@ export default function RootLayout({
       <body className={`${_manrope.variable} font-sans antialiased`}>
         {children}
         <FloatingWhatsApp />
+        <ChatWidget />
         <Analytics />
       </body>
     </html>
