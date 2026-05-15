@@ -1,6 +1,14 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+const ENABLE_RATE_LIMIT = process.env.ENABLE_RATE_LIMIT === "true";
+
+const RATE_LIMIT_NOTE = `
+NOTE: This in-memory rate limiting works only in non-serverless environments.
+In Vercel (serverless), use a shared store like Vercel KV or Upstash Redis.
+Set ENABLE_RATE_LIMIT=true to enable this middleware (default: disabled).
+`;
+
 const rateLimit = new Map<string, { count: number; timestamp: number }>();
 
 const WINDOW_MS = 60 * 1000;
@@ -14,6 +22,10 @@ function getClientIp(request: NextRequest): string {
 
 export function middleware(request: NextRequest) {
   if (!request.nextUrl.pathname.startsWith("/api/chat")) {
+    return NextResponse.next();
+  }
+
+  if (!ENABLE_RATE_LIMIT) {
     return NextResponse.next();
   }
 
