@@ -14,25 +14,40 @@ interface OllamaMessage {
 
 async function callOllama(messages: OllamaMessage[]): Promise<string> {
   const ollamaUrl = process.env.OLLAMA_URL || "http://localhost:11434";
+  const model = process.env.OLLAMA_MODEL || "qwen2.5-coder:latest";
 
-  const response = await fetch(`${ollamaUrl}/api/chat`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: "qwen2.5-coder:latest",
-      messages: messages,
-      stream: false,
-    }),
-  });
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 120000);
 
-  if (!response.ok) {
-    throw new Error(`Ollama error: ${response.statusText}`);
+  try {
+    const response = await fetch(`${ollamaUrl}/api/chat`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model,
+        messages: messages,
+        stream: false,
+      }),
+      signal: controller.signal,
+    });
+
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      throw new Error(`Ollama error: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data.message.content;
+  } catch (error) {
+    clearTimeout(timeoutId);
+    if (error instanceof Error && error.name === "AbortError") {
+      throw new Error("Timeout al conectar con Ollama");
+    }
+    throw error;
   }
-
-  const data = await response.json();
-  return data.message.content;
 }
 
 export async function POST(request: NextRequest) {
@@ -62,14 +77,6 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    await prisma.message.create({
-      data: {
-        role: "user",
-        content: message,
-        conversationId: conversation.id,
-      },
-    });
-
     const catalogContext = getCatalogForAI();
 
     const systemMessage: OllamaMessage = {
@@ -92,13 +99,22 @@ export async function POST(request: NextRequest) {
 
     const aiResponse = await callOllama(allMessages);
 
-    await prisma.message.create({
-      data: {
-        role: "assistant",
-        content: aiResponse,
-        conversationId: conversation.id,
-      },
-    });
+    await prisma.$transaction([
+      prisma.message.create({
+        data: {
+          role: "user",
+          content: message,
+          conversationId: conversation.id,
+        },
+      }),
+      prisma.message.create({
+        data: {
+          role: "assistant",
+          content: aiResponse,
+          conversationId: conversation.id,
+        },
+      }),
+    ]);
 
     return NextResponse.json({
       conversationId: conversation.id,
@@ -107,10 +123,11 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("Chat error:", error);
     const errorMessage = error instanceof Error ? error.message : String(error);
-    return NextResponse.json(
-      { error: "Error al procesar el mensaje", details: errorMessage },
-      { status: 500 }
-    );
+    const response: Record<string, unknown> = { error: "Error al procesar el mensaje" };
+    if (process.env.NODE_ENV !== "production") {
+      response.details = errorMessage;
+    }
+    return NextResponse.json(response, { status: 500 });
   }
 }
 

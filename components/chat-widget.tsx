@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send, Bot } from "lucide-react";
 
 interface Message {
+  id: string;
   role: "user" | "assistant";
   content: string;
 }
@@ -27,7 +28,7 @@ export function ChatWidget() {
     setInput("");
     setIsLoading(true);
 
-    setMessages((prev) => [...prev, { role: "user", content: userMessage }]);
+    setMessages((prev) => [...prev, { id: crypto.randomUUID(), role: "user", content: userMessage }]);
 
     try {
       const response = await fetch("/api/chat", {
@@ -51,12 +52,13 @@ export function ChatWidget() {
 
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: data.message },
+        { id: crypto.randomUUID(), role: "assistant", content: data.message },
       ]);
-    } catch (error) {
+    } catch {
       setMessages((prev) => [
         ...prev,
         {
+          id: crypto.randomUUID(),
           role: "assistant",
           content: "Disculpa, tuve un problema al procesar tu mensaje. ¿Podrías intentarlo de nuevo?",
         },
@@ -109,9 +111,9 @@ export function ChatWidget() {
               </div>
             )}
 
-            {messages.map((msg, index) => (
+            {messages.map((msg) => (
               <div
-                key={index}
+                key={msg.id}
                 className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
